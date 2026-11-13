@@ -1,0 +1,5774 @@
+/* =========================================================
+   custom.css — additions/overrides for requested changes
+   ========================================================= */
+
+/* ---- Fix E: form placeholder/labels were forced UPPERCASE, make normal case ---- */
+#contact input::placeholder,
+#contact textarea::placeholder,
+#contact select,
+.mil-subscribe-form input::placeholder,
+.mil-subscribe-form-2 input::placeholder,
+.mil-contact-form input::placeholder,
+.mil-contact-form textarea::placeholder,
+.mil-contact-form label,
+.mil-contact-form select,
+.mil-office-carousel,
+.mil-currency-select,
+.mil-country-code-select {
+  text-transform: none !important;
+}
+
+/* ---- Language switcher ---- */
+.mil-lang-switcher{
+  position:fixed;
+  top:24px;
+  right:110px;
+  z-index:1000;
+}
+.mil-lang-current{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:13px;
+  backdrop-filter: blur(4px);
+}
+body.mil-light-theme-page .mil-lang-current{
+  background:rgba(0,0,0,.05);
+  border-color:rgba(0,0,0,.2);
+  color:#111;
+}
+.mil-lang-flag{ font-size:16px; line-height:1; }
+.mil-lang-list{
+  display:none;
+  position:absolute;
+  right:0;
+  top:calc(100% + 8px);
+  background:#111;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;
+  min-width:170px;
+  padding:6px;
+  list-style:none;
+  margin:0;
+}
+.mil-lang-list.mil-open{ display:block; }
+.mil-lang-list li button{
+  width:100%;
+  text-align:left;
+  background:none;
+  border:0;
+  color:#eee;
+  padding:8px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.mil-lang-list li button:hover{ background:rgba(255,255,255,.1); }
+[dir="rtl"] .mil-lang-switcher{ right:auto; left:110px; }
+
+/* ---- Services menu (mega list w/ sub-services) ---- */
+#servicesMenuList{ max-height:60vh; overflow-y:auto; }
+.mil-service-menu-group{ padding:6px 0; }
+.mil-service-menu-group > a{
+  color:#ff9c00 !important;
+  font-weight:600;
+  display:block;
+  padding:6px 0;
+}
+.mil-service-menu-group ul{
+  list-style:none;
+  margin:0 0 6px 12px;
+  padding:0;
+}
+.mil-service-menu-group ul li a{
+  font-size:13px !important;
+  opacity:.8;
+  padding:3px 0 !important;
+  display:block;
+}
+
+/* ---- Office / map carousel (footer + contact) ---- */
+.mil-office-carousel{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:30px 10px;
+  border-top:1px solid rgba(255,255,255,.1);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.mil-office-arrow{
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.3);
+  background:transparent;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:.25s;
+}
+.mil-office-arrow:hover{ background:#ff9c00; border-color:#ff9c00; }
+.mil-office-slide{ flex:1 1 auto; text-align:center; }
+.mil-office-name{ margin-bottom:8px; }
+.mil-office-address{ max-width:640px; margin:0 auto 8px; }
+.mil-office-phone{ margin-bottom:8px; }
+.mil-office-gmb{ display:inline-block; }
+.mil-office-dots{
+  position:absolute;
+  bottom:6px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:6px;
+}
+.mil-office-dots span{
+  width:7px; height:7px; border-radius:50%;
+  background:rgba(255,255,255,.3);
+  cursor:pointer;
+}
+.mil-office-dots span.mil-active{ background:#ff9c00; }
+
+/* Map cards on contact page — consistent sizing + carousel */
+.mil-map-carousel-frame{
+  width:100%;
+  height:420px;
+  border-radius:12px;
+  overflow:hidden;
+  position:relative;
+}
+.mil-map-carousel-frame iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+.mil-map-office-label{
+  position:absolute;
+  left:20px;
+  top:20px;
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  padding:12px 18px;
+  border-radius:10px;
+  max-width:320px;
+  font-size:13px;
+  line-height:1.5;
+  z-index:2;
+}
+.mil-map-office-label h6{ margin:0 0 6px; color:#fff; }
+.mil-map-office-label a{ color:#ff9c00; }
+
+/* ---- Contact form field groups: country code + currency ---- */
+.mil-phone-group{ display:flex; gap:10px; align-items:flex-end; }
+.mil-phone-group select{
+  width:110px;
+  flex:0 0 auto;
+}
+.mil-phone-group input{ flex:1 1 auto; }
+
+.mil-budget-group{ display:flex; gap:10px; width:100%; }
+.mil-budget-group select{ width:120px; flex:0 0 auto; }
+.mil-budget-group input{ flex:1 1 auto; }
+
+.mil-required-mark{ color:#ff5a5a; margin-left:2px; }
+
+/* generic select styling to match theme inputs */
+#contact select, .mil-phone-group select, .mil-budget-group select{
+  height:70px;
+  border:none;
+  border-bottom:solid 1px rgba(0,0,0,.2);
+  background:transparent;
+  font-size:14px;
+}
+
+/* Service accordion sub-service links */
+.mil-service-sub-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:8px;
+  font-size:13px;
+}
+
+.mil-visually-hidden{
+  position:absolute !important;
+  width:1px; height:1px;
+  padding:0; margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+.mil-legal-copy p{ margin-bottom:14px; line-height:1.7; }
+.mil-legal-copy ul, .mil-legal-copy ol{ margin:0 0 16px 22px; }
+.mil-legal-copy li{ margin-bottom:8px; }
+
+/* ---- Hide Google Translate's default toolbar/banner UI — we drive
+   translation entirely through our own flag menu ---- */
+.mil-goog-hidden{ display:none !important; }
+body{ top:0 !important; position:static !important; }
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon,
+#goog-gt-tt, .goog-te-balloon-frame,
+.goog-tooltip, .goog-tooltip:hover,
+.goog-text-highlight{ display:none !important; background:none !important; box-shadow:none !important; }
+iframe.goog-te-banner-frame{ display:none !important; }
+.goog-te-gadget{ height:0 !important; overflow:hidden !important; font-size:0 !important; }
+.goog-te-menu-value{ display:none !important; }
+
+@media (max-width: 768px){
+  .mil-lang-switcher{ top:16px; right:80px; }
+  .mil-office-carousel{ flex-direction:column; }
+  .mil-map-carousel-frame{ height:300px; }
+}
+
+
+
+/* =========================================================
+   DEEPSHITECH SIDE CONTACT DRAWER
+========================================================= */
+
+:root {
+    --ds-gold: #C78C24;
+    --ds-black: #0a0a0a;
+    --ds-panel: #111111;
+    --ds-field: #171717;
+    --ds-border: rgba(255, 255, 255, 0.12);
+    --ds-text: rgba(255, 255, 255, 0.72);
+}
+
+
+/* =========================================
+   VERTICAL FORM TRIGGER
+========================================= */
+
+.ds-form-trigger {
+    position: fixed;
+
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    z-index: 1200;
+
+    /* Vertical button size */
+    width: 48px;
+    height: 125px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Website gold theme */
+    background: #d3941b;
+    color: #ffffff;
+
+    border: 1px solid #d3941b;
+    border-right: 0;
+
+    border-radius: 8px 0 0 8px;
+
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+
+    /* Makes text vertical */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+
+    cursor: pointer;
+
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.18);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* Hide trigger when popup is open */
+.ds-form-trigger.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-50%) translateX(100%);
+}
+
+
+/* Icon if you use it later */
+.ds-form-trigger i {
+    color: #ffffff;
+}
+
+
+/* Hover */
+.ds-form-trigger:hover {
+    background: #b97d10;
+}
+
+
+/* Hover icon */
+.ds-form-trigger:hover i {
+    color: #ffffff;
+}
+
+/* overlay */
+
+.ds-form-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1998;
+
+    background: rgba(0, 0, 0, 0.58);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.35s ease;
+}
+
+.ds-form-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* drawer */
+
+.ds-form-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    z-index: 1999;
+
+    width: min(510px, 90vw);
+    height: 100vh;
+
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b0b0b 0%,
+            #101010 100%
+        );
+
+    border-left: 1px solid rgba(209, 148, 31, 0.35);
+
+    box-shadow:
+        -25px 0 70px rgba(0, 0, 0, 0.45);
+
+    transform: translateX(102%);
+
+    transition:
+        transform 0.55s cubic-bezier(.22, 1, .36, 1);
+}
+
+.ds-form-drawer.active {
+    transform: translateX(0);
+}
+
+
+/* scrollbar */
+
+.ds-form-drawer::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ds-form-drawer::-webkit-scrollbar-track {
+    background: #0b0b0b;
+}
+
+.ds-form-drawer::-webkit-scrollbar-thumb {
+    background: rgba(209, 148, 31, 0.5);
+}
+
+
+/* close */
+
+.ds-form-close {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+
+    z-index: 2;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+
+    background: transparent;
+
+    color: rgba(255,255,255,0.7);
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.ds-form-close:hover {
+    color: var(--ds-gold);
+    transform: rotate(90deg);
+}
+
+
+/* intro */
+
+.ds-form-intro {
+    padding: 70px 46px 28px;
+}
+
+.ds-form-kicker {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--ds-gold);
+
+    font-size: 11px;
+    letter-spacing: 2.2px;
+    font-weight: 600;
+}
+
+
+.ds-form-main-heading {
+    margin: 0;
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #b97d10;
+}
+
+
+/* divider */
+
+.ds-form-divider {
+    height: 1px;
+
+    background: rgba(209, 148, 31, 0.28);
+}
+
+
+/* form content */
+
+.ds-form-content {
+    padding: 24px 46px 40px;
+}
+
+.ds-form-content h3 {
+    margin: 0 0 30px;
+
+    color: #fff;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 25px;
+    font-weight: 600;
+}
+
+
+/* form */
+
+.ds-project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.ds-form-row {
+ display: contents;
+}
+
+/* field */
+
+.ds-field label {
+    display: block;
+
+    /* margin-bottom: 0px; */
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.ds-field input,
+.ds-field select,
+.ds-field textarea {
+    width: 100%;
+
+    padding: 10px 14px;
+
+    border: 1px solid var(--ds-border);
+    border-radius: 6px;
+    background: var(--ds-field);
+    color: #fff;
+    font-size: 14px;
+    text-transform: none;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+.ds-field input::placeholder,
+.ds-field textarea::placeholder {
+    color: rgba(255,255,255,0.35);
+    text-transform: none;
+}
+
+.ds-field input:focus,
+.ds-field select:focus,
+.ds-field textarea:focus {
+    border-color:
+        rgba(209, 148, 31, 0.75);
+
+    background: #191919;
+}
+
+.ds-field > input {
+    height: 42px;
+}
+
+
+/* phone */
+
+.ds-phone-group {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    margin-bottom: 0px;
+}
+
+.ds-phone-group select {
+    border-radius: 6px 0 0 6px;
+
+    border-right: 0;
+
+    color: var(--ds-gold);
+    font-weight: 600;
+}
+
+.ds-phone-group input {
+    border-radius: 0 6px 6px 0;
+}
+
+.ds-phone-group select,
+.ds-phone-group input {
+    height: 42px;
+}
+
+.ds-country-code {
+    padding-left: 5px !important;
+    padding-right: 22px !important;
+    font-size: 13px;
+}
+
+/* budget */
+
+.ds-budget-group {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    margin-bottom: 0px;
+}
+
+.ds-budget-group select {
+    border-radius: 6px 0 0 6px;
+
+    border-right: 0;
+
+    color: var(--ds-gold);
+    font-weight: 600;
+}
+
+.ds-budget-group input {
+    border-radius: 0 6px 6px 0;
+}
+
+.ds-budget-group select,
+.ds-budget-group input {
+    height: 42px;
+}
+
+
+/* textarea */
+
+.ds-field textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+/* submit */
+
+.ds-form-submit {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 5px;
+
+    padding:
+        8px 8px 8px 22px;
+
+    border:
+        1px solid var(--ds-gold);
+
+    border-radius: 30px;
+
+    background: var(--ds-gold);
+
+    color: #000;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.ds-form-submit-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #000;
+
+    color: var(--ds-gold);
+}
+
+.ds-form-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(209,148,31,0.16);
+}
+
+
+/* tablet */
+
+@media (max-width: 820px) {
+
+    .ds-form-drawer {
+        width: 100%;
+    }
+
+    .ds-form-intro,
+    .ds-form-content {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+}
+
+
+.ds-form-status {
+    display: none;
+    padding: 12px 14px;
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.ds-form-status.success {
+    display: block;
+    color: #d1941f;
+    border: 1px solid rgba(209, 148, 31, 0.35);
+    background: rgba(209, 148, 31, 0.08);
+}
+
+.ds-form-status.error {
+    display: block;
+    color: #ff8a8a;
+    border: 1px solid rgba(255, 90, 90, 0.3);
+    background: rgba(255, 90, 90, 0.06);
+}
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+    .ds-form-intro {
+        padding-top: 80px;
+    }
+
+    .ds-form-intro h2 {
+        font-size: 31px;
+    }
+
+    .ds-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .ds-services-list {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .ds-form-trigger span {
+        display: none;
+    }
+
+    .ds-form-trigger {
+        padding: 15px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .ds-form-trigger {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 45px;
+        height: 116px;
+        padding: 0;
+
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+
+        background: #d3941b;
+        color: #fff;
+
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+
+        z-index: 9998;
+        overflow: visible;
+
+        border-radius: 7px 0 0 7px;
+    }
+
+    .ds-form-trigger span {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        color: #fff !important;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 1.2px;
+
+        white-space: nowrap;
+    }
+
+}
+
+
+/* =========================================
+   MULTI SERVICE DROPDOWN
+========================================= */
+
+.ds-services-multiselect {
+    position: relative;
+    width: 100%;
+}
+
+.ds-services-select-btn {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 14px;
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--ds-field);
+    border: 1px solid var(--ds-border);
+    border-radius: 6px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-family: inherit;
+    font-size: 14px;
+    text-align: left;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.ds-services-select-btn i {
+    color: var(--ds-gold);
+    font-size: 11px;
+    transition: transform 0.2s ease;
+}
+
+
+/* DROPDOWN */
+
+.ds-services-options {
+    position: absolute;
+
+    top: calc(100% + 5px);
+    left: 0;
+
+    width: 100%;
+    max-height: 230px;
+
+    overflow-y: auto;
+
+    padding: 6px 0;
+
+    background: #171717;
+
+    border: 1px solid var(--ds-border);
+    border-radius: 6px;
+
+    z-index: 50;
+
+    display: none;
+}
+
+.ds-services-multiselect.active .ds-services-options {
+    display: block;
+}
+
+.ds-services-multiselect.active .ds-services-select-btn {
+    border-color: var(--ds-gold);
+}
+
+.ds-services-multiselect.active .ds-services-select-btn i {
+    transform: rotate(180deg);
+}
+
+
+/* EACH OPTION */
+
+.ds-services-options label {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 14px;
+
+    margin: 0;
+
+    color: rgba(255,255,255,0.72);
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.ds-services-options label:hover {
+    background: rgba(199, 140, 36, 0.10);
+}
+
+
+/* CHECKBOX */
+
+.ds-services-options input {
+    width: 15px;
+    height: 15px;
+
+    margin: 0;
+
+    flex-shrink: 0;
+
+    accent-color: var(--ds-gold);
+}
+
+
+/* SCROLLBAR */
+
+.ds-services-options::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ds-services-options::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.ds-services-options::-webkit-scrollbar-thumb {
+    background: var(--ds-gold);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   AUTO CENTER POPUP
+========================================================= */
+
+.ds-auto-overlay {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.68);
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 2998;
+
+    transition: 0.3s ease;
+}
+
+.ds-auto-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* =========================================================
+   POPUP BOX
+========================================================= */
+
+.ds-auto-popup {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform:
+        translate(-50%, -50%)
+        scale(0.95);
+
+    width: min(920px, 92vw);
+    max-height: 90vh;
+
+    overflow-y: auto;
+
+    padding: 34px 38px 32px;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b0b0b 0%,
+            #111111 100%
+        );
+
+    border: 1px solid rgba(199, 140, 36, 0.38);
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 25px 80px rgba(0, 0, 0, 0.55);
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 2999;
+
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.ds-auto-popup.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translate(-50%, -50%)
+        scale(1);
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.ds-auto-close {
+    position: absolute;
+
+    top: 16px;
+    right: 18px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+
+    background: transparent;
+
+    color: rgba(255,255,255,0.65);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.ds-auto-close:hover {
+    color: #c78c24;
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.ds-auto-header {
+    margin-bottom: 26px;
+}
+
+.ds-auto-kicker {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #c78c24;
+
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.ds-auto-header h2 {
+    margin: 0;
+
+    color: #ffffff;
+
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+
+/* =========================================================
+   FORM
+========================================================= */
+
+.ds-auto-project-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   2 COLUMN GRID
+========================================================= */
+
+.ds-auto-form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+}
+
+
+/* =========================================================
+   NORMAL FIELDS
+========================================================= */
+
+.ds-auto-field {
+    width: 100%;
+}
+
+.ds-auto-field input,
+.ds-auto-field textarea,
+.ds-auto-field select {
+    width: 100%;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 7px;
+
+    background: #181818;
+
+    color: #ffffff;
+
+    font-family: inherit;
+    font-size: 14px;
+
+    outline: none;
+
+    box-sizing: border-box;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease;
+}
+
+.ds-auto-field input {
+    height: 58px;
+    padding: 0 16px;
+}
+
+.ds-auto-field textarea {
+    min-height: 105px;
+
+    padding: 14px 16px;
+
+    resize: vertical;
+}
+
+.ds-auto-field input::placeholder,
+.ds-auto-field textarea::placeholder {
+    color: rgba(255,255,255,0.38);
+
+    opacity: 1;
+
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.ds-auto-field input:focus,
+.ds-auto-field textarea:focus,
+.ds-auto-field select:focus {
+    border-color: #c78c24;
+
+    background: #1b1b1b;
+}
+
+
+/* =========================================================
+   PHONE
+========================================================= */
+
+.ds-auto-phone-group {
+    width: 100%;
+    height: 58px;
+
+    display: grid;
+
+    grid-template-columns:
+        125px 1fr;
+
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    border-radius: 7px;
+
+    background: #181818;
+
+    overflow: hidden;
+}
+
+.ds-auto-phone-group select,
+.ds-auto-phone-group input {
+    height: 100%;
+
+    border: 0;
+
+    background: transparent;
+
+    color: #ffffff;
+}
+
+.ds-auto-phone-group select {
+    padding: 0 12px;
+
+    border-right:
+        1px solid rgba(255,255,255,0.12);
+
+    color: #c78c24;
+
+    font-weight: 600;
+}
+
+.ds-auto-phone-group input {
+    padding: 0 16px;
+}
+
+
+/* =========================================================
+   BUDGET
+========================================================= */
+
+.ds-auto-budget-group {
+    width: 100%;
+    height: 58px;
+
+    display: grid;
+
+    grid-template-columns:
+        125px 1fr;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-radius: 7px;
+
+    background: #181818;
+
+    overflow: hidden;
+}
+
+.ds-auto-budget-group select,
+.ds-auto-budget-group input {
+    height: 100%;
+
+    border: 0;
+
+    background: transparent;
+}
+
+.ds-auto-budget-group select {
+    padding: 0 12px;
+
+    color: #c78c24;
+
+    font-weight: 600;
+
+    border-right:
+        1px solid rgba(255,255,255,0.12);
+}
+
+.ds-auto-budget-group input {
+    padding: 0 16px;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.ds-auto-services-multiselect {
+    position: relative;
+
+    width: 100%;
+}
+
+.ds-auto-services-select-btn {
+    width: 100%;
+    height: 58px;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #181818;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-radius: 7px;
+
+    color: rgba(255,255,255,0.48);
+
+    font-family: inherit;
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.ds-auto-services-select-btn i {
+    color: #c78c24;
+
+    font-size: 12px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+.ds-auto-services-multiselect.active
+.ds-auto-services-select-btn {
+    border-color: #c78c24;
+}
+
+.ds-auto-services-multiselect.active
+.ds-auto-services-select-btn i {
+    transform: rotate(180deg);
+}
+
+
+/* services dropdown */
+
+.ds-auto-services-options {
+    position: absolute;
+
+    top: calc(100% + 6px);
+    left: 0;
+
+    width: 100%;
+
+    max-height: 220px;
+
+    overflow-y: auto;
+
+    display: none;
+
+    padding: 7px 0;
+
+    background: #171717;
+
+    border:
+        1px solid rgba(255,255,255,0.12);
+
+    border-radius: 7px;
+
+    z-index: 30;
+}
+
+.ds-auto-services-multiselect.active
+.ds-auto-services-options {
+    display: block;
+}
+
+.ds-auto-services-options label {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 14px;
+
+    margin: 0;
+
+    color: rgba(255,255,255,0.75);
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.ds-auto-services-options label:hover {
+    background:
+        rgba(199, 140, 36, 0.10);
+}
+
+.ds-auto-services-options input {
+    width: 15px;
+    height: 15px;
+
+    margin: 0;
+
+    accent-color: #c78c24;
+}
+
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.ds-auto-message-field {
+    width: 100%;
+}
+
+
+/* =========================================================
+   STATUS
+========================================================= */
+
+.ds-auto-form-status {
+    display: none;
+
+    padding: 11px 14px;
+
+    border-radius: 6px;
+
+    font-size: 13px;
+}
+
+.ds-auto-form-status.success {
+    display: block;
+
+    color: #d1941f;
+
+    border:
+        1px solid rgba(209,148,31,0.35);
+
+    background:
+        rgba(209,148,31,0.08);
+}
+
+.ds-auto-form-status.error {
+    display: block;
+
+    color: #ff8a8a;
+
+    border:
+        1px solid rgba(255,90,90,0.3);
+
+    background:
+        rgba(255,90,90,0.06);
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.ds-auto-submit {
+    width: 220px;
+
+    align-self: flex-end;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 7px 7px 7px 20px;
+
+    border: 1px solid #c78c24;
+
+    border-radius: 30px;
+
+    background: #c78c24;
+
+    color: #000000;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.ds-auto-submit-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #000;
+
+    color: #c78c24;
+}
+
+.ds-auto-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(199,140,36,0.18);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .ds-auto-popup {
+        width: 92vw;
+
+        max-height: 88vh;
+
+        padding:
+            28px 20px 24px;
+    }
+
+    .ds-auto-header h2 {
+        font-size: 24px;
+    }
+
+    .ds-auto-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ds-auto-submit {
+        width: 100%;
+    }
+
+}
+
+
+
+
+/* Keep user-entered form text normal */
+.ds-auto-project-form input,
+.ds-auto-project-form textarea,
+.ds-auto-project-form select,
+.ds-auto-project-form option {
+    text-transform: none !important;
+}
+
+/* =========================================================
+   AUTO POPUP — GLASS THEME
+   Paste this at the VERY BOTTOM of css/custom.css
+   (it overrides the old .ds-auto-* dark styles above it)
+
+   To change the colour mood, only edit the variables below.
+========================================================= */
+
+.ds-auto-overlay,
+.ds-auto-popup {
+    /* brand accent (buttons, focus, icons) */
+    --glass-accent: #e8a935;
+    --glass-accent-2: #f7cf7a;
+
+    /* colour blobs that glow BEHIND the glass */
+    --glass-blob-1: rgba(232, 169, 53, 0.55);   /* gold   */
+    --glass-blob-2: rgba(120, 90, 255, 0.50);   /* violet */
+    --glass-blob-3: rgba(40, 140, 255, 0.35);   /* blue   */
+
+    /* glass surface */
+    --glass-fill-top: rgba(255, 255, 255, 0.16);
+    --glass-fill-bottom: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.24);
+    --glass-field: rgba(255, 255, 255, 0.08);
+    --glass-field-border: rgba(255, 255, 255, 0.20);
+}
+
+
+/* =========================================================
+   OVERLAY  — blurs the website and holds the glowing blobs
+   (the glass card blurs these blobs, which is what creates
+    the frosted look)
+========================================================= */
+
+.ds-auto-overlay {
+    background:
+        radial-gradient(120% 90% at 50% 0%,
+            rgba(18, 14, 40, 0.78) 0%,
+            rgba(6, 6, 16, 0.90) 70%);
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    overflow: hidden;
+}
+
+.ds-auto-overlay::before,
+.ds-auto-overlay::after {
+    content: "";
+
+    position: absolute;
+
+    border-radius: 50%;
+
+    filter: blur(70px);
+
+    pointer-events: none;
+}
+
+/* big gold glow, top-left */
+.ds-auto-overlay::before {
+    top: 4%;
+    left: 8%;
+
+    width: 46vmax;
+    height: 46vmax;
+
+    background:
+        radial-gradient(circle at 30% 30%,
+            var(--glass-blob-1),
+            transparent 65%);
+}
+
+/* violet + blue glow, bottom-right */
+.ds-auto-overlay::after {
+    right: 4%;
+    bottom: 0;
+
+    width: 52vmax;
+    height: 52vmax;
+
+    background:
+        radial-gradient(circle at 60% 55%,
+            var(--glass-blob-2),
+            transparent 62%),
+        radial-gradient(circle at 20% 90%,
+            var(--glass-blob-3),
+            transparent 60%);
+}
+
+
+/* =========================================================
+   POPUP — the glass card
+========================================================= */
+
+.ds-auto-popup {
+    padding: 40px 44px 36px;
+
+    color-scheme: dark;
+
+    background:
+        linear-gradient(145deg,
+            var(--glass-fill-top) 0%,
+            var(--glass-fill-bottom) 100%);
+
+    border: 1px solid var(--glass-border);
+    border-radius: 26px;
+
+    -webkit-backdrop-filter: blur(28px) saturate(170%);
+    backdrop-filter: blur(28px) saturate(170%);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.45),
+        0 2px 0 rgba(255, 255, 255, 0.28) inset,     /* top edge light */
+        0 -1px 0 rgba(255, 255, 255, 0.06) inset,
+        0 0 0 1px rgba(255, 255, 255, 0.03) inset;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+/* soft light streak across the top of the glass */
+.ds-auto-popup::before {
+    content: "";
+
+    position: absolute;
+    inset: 0 0 auto 0;
+
+    height: 140px;
+
+    border-radius: 26px 26px 0 0;
+
+    background:
+        linear-gradient(180deg,
+            rgba(255, 255, 255, 0.10),
+            transparent);
+
+    pointer-events: none;
+}
+
+.ds-auto-popup > * {
+    position: relative;
+}
+
+.ds-auto-popup > .ds-auto-close {
+    position: absolute;
+}
+
+.ds-auto-popup::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ds-auto-popup::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+
+    border-radius: 6px;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.ds-auto-close {
+    top: 18px;
+    right: 20px;
+
+    width: 38px;
+    height: 38px;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 16px;
+}
+
+.ds-auto-close:hover {
+    background: rgba(255, 255, 255, 0.18);
+
+    border-color: var(--glass-accent);
+
+    color: #ffffff;
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.ds-auto-header {
+    margin-bottom: 30px;
+}
+
+.ds-auto-header h2 {
+    display: inline-block;
+
+    font-size: 34px;
+    font-weight: 600;
+    letter-spacing: -0.4px;
+
+    background:
+        linear-gradient(90deg,
+            #ffffff 0%,
+            #ffffff 45%,
+            var(--glass-accent-2) 100%);
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+
+/* =========================================================
+   FIELDS  (input / textarea / phone / budget / services)
+========================================================= */
+
+/* the theme adds margin-bottom:30px to every input, which made the
+   rows uneven — remove it so the grid gap controls spacing */
+.ds-auto-project-form input,
+.ds-auto-project-form textarea,
+.ds-auto-project-form select {
+    margin: 0;
+}
+
+.ds-auto-form-grid,
+.ds-auto-project-form {
+    gap: 18px;
+}
+
+.ds-auto-field input,
+.ds-auto-field textarea,
+.ds-auto-field select,
+.ds-auto-phone-group,
+.ds-auto-budget-group,
+.ds-auto-services-select-btn {
+    background: var(--glass-field);
+
+    border: 1px solid var(--glass-field-border);
+    border-radius: 14px;
+
+    color: #ffffff;
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.10) inset;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ds-auto-field input:hover,
+.ds-auto-field textarea:hover,
+.ds-auto-phone-group:hover,
+.ds-auto-budget-group:hover,
+.ds-auto-services-select-btn:hover {
+    background: rgba(255, 255, 255, 0.11);
+}
+
+/* focus ring */
+.ds-auto-field input:focus,
+.ds-auto-field textarea:focus,
+.ds-auto-field select:focus,
+.ds-auto-phone-group:focus-within,
+.ds-auto-budget-group:focus-within,
+.ds-auto-services-multiselect.active .ds-auto-services-select-btn {
+    background: rgba(255, 255, 255, 0.13);
+
+    border-color: var(--glass-accent);
+
+    box-shadow:
+        0 0 0 4px rgba(232, 169, 53, 0.18),
+        0 1px 0 rgba(255, 255, 255, 0.12) inset;
+}
+
+/* the inner inputs of phone / budget groups sit inside the glass box */
+.ds-auto-phone-group input,
+.ds-auto-phone-group select,
+.ds-auto-budget-group input,
+.ds-auto-budget-group select {
+    background: transparent;
+
+    border: 0;
+    border-radius: 0;
+
+    box-shadow: none;
+
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+}
+
+.ds-auto-phone-group select,
+.ds-auto-budget-group select {
+    color: var(--glass-accent-2);
+
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+}
+
+.ds-auto-phone-group input:focus,
+.ds-auto-budget-group input:focus {
+    background: transparent;
+
+    box-shadow: none;
+}
+
+/* placeholders */
+.ds-auto-field input::placeholder,
+.ds-auto-field textarea::placeholder {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.ds-auto-services-select-btn {
+    color: rgba(255, 255, 255, 0.55);
+}
+
+.ds-auto-services-select-btn i {
+    color: var(--glass-accent-2);
+}
+
+/* native <option> lists (country code / currency) */
+.ds-auto-project-form option {
+    background: #1b1a2e;
+
+    color: #ffffff;
+}
+
+/* textarea */
+.ds-auto-field textarea {
+    min-height: 120px;
+}
+
+
+/* =========================================================
+   SERVICES DROPDOWN PANEL
+========================================================= */
+
+.ds-auto-services-options {
+    padding: 8px;
+
+    background: rgba(26, 24, 46, 0.96);   /* mostly solid so the fields under it don't show through */
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 14px;
+
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    backdrop-filter: blur(24px) saturate(160%);
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.ds-auto-services-options label {
+    border-radius: 9px;
+
+    color: rgba(255, 255, 255, 0.85);
+}
+
+.ds-auto-services-options label:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.ds-auto-services-options input {
+    accent-color: var(--glass-accent);
+}
+
+
+/* =========================================================
+   STATUS MESSAGES
+========================================================= */
+
+.ds-auto-form-status {
+    border-radius: 12px;
+}
+
+.ds-auto-form-status.success {
+    color: #b8f5cf;
+
+    border: 1px solid rgba(120, 230, 170, 0.35);
+
+    background: rgba(120, 230, 170, 0.10);
+}
+
+.ds-auto-form-status.error {
+    color: #ffb3b3;
+
+    border: 1px solid rgba(255, 110, 110, 0.35);
+
+    background: rgba(255, 110, 110, 0.10);
+}
+
+
+/* =========================================================
+   SUBMIT BUTTON
+========================================================= */
+
+.ds-auto-submit {
+    position: relative;
+
+    overflow: hidden;
+
+    width: 230px;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 40px;
+
+    background:
+        linear-gradient(135deg,
+            var(--glass-accent-2) 0%,
+            var(--glass-accent) 100%);
+
+    color: #1a1204;
+
+    box-shadow:
+        0 10px 26px rgba(232, 169, 53, 0.30),
+        0 1px 0 rgba(255, 255, 255, 0.55) inset;
+}
+
+/* glossy sweep on hover */
+.ds-auto-submit::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -60%;
+
+    width: 40%;
+    height: 100%;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.45),
+            transparent);
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+
+    pointer-events: none;
+}
+
+.ds-auto-submit:hover::before {
+    left: 130%;
+}
+
+.ds-auto-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 34px rgba(232, 169, 53, 0.42),
+        0 1px 0 rgba(255, 255, 255, 0.55) inset;
+}
+
+.ds-auto-submit-icon {
+    background: rgba(20, 14, 4, 0.88);
+
+    color: var(--glass-accent-2);
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .ds-auto-popup {
+        padding: 30px 20px 24px;
+
+        border-radius: 20px;
+    }
+
+    .ds-auto-popup::before {
+        border-radius: 20px 20px 0 0;
+    }
+
+    .ds-auto-header {
+        padding-right: 44px;   /* keep the heading clear of the close button */
+    }
+
+    .ds-auto-header h2 {
+        font-size: 26px;
+    }
+
+    /* lighter blur = smoother on phones */
+    .ds-auto-popup {
+        -webkit-backdrop-filter: blur(18px) saturate(160%);
+        backdrop-filter: blur(18px) saturate(160%);
+    }
+
+}
+
+
+/* =========================================================
+   FALLBACK — browsers without backdrop-filter
+========================================================= */
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+
+    .ds-auto-popup {
+        background: rgba(28, 26, 48, 0.96);
+    }
+
+    .ds-auto-services-options {
+        background: rgba(28, 26, 48, 0.98);
+    }
+
+}
+
+
+/* =========================================================
+   hide the floating "Start a Project" tab while this popup is open
+   (modern browsers; harmlessly ignored by old ones)
+========================================================= */
+
+body:has(.ds-auto-popup.active) .ds-form-trigger {
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+/* =========================================================
+   AUTO CENTER POPUP — BLACK & GOLD THEME (complete replacement)
+
+   In css/custom.css: delete the old block that starts with
+   "AUTO CENTER POPUP" (down to the end of the file) and paste
+   this in its place.
+
+   Colour mood → only edit the variables in the first block.
+========================================================= */
+
+.ds-auto-overlay,
+.ds-auto-popup {
+    /* brand gold (matches the rest of the site) */
+    --glass-accent: #e0a12c;
+    --glass-accent-2: #f7cf7a;
+
+    /* soft gold light behind the card */
+    --glass-blob-1: rgba(224, 161, 44, 0.16);
+
+    /* black card */
+    --glass-fill-top: #121212;
+    --glass-fill-bottom: #070707;
+    --glass-border: rgba(224, 161, 44, 0.32);
+    --glass-field: rgba(20, 20, 20, 0.82);
+    --glass-field-border: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   OVERLAY  (black backdrop + soft gold glow in the centre)
+========================================================= */
+
+.ds-auto-overlay {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    background: rgba(0, 0, 0, 0.88);
+
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 2998;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.ds-auto-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ds-auto-overlay::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 70vmin;
+    height: 70vmin;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            var(--glass-blob-1),
+            transparent 68%);
+
+    filter: blur(40px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   POPUP — the glass card
+========================================================= */
+
+.ds-auto-popup {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) scale(0.95);
+
+    width: min(800px, 94vw);
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    padding: 38px 44px 30px;
+
+    box-sizing: border-box;
+
+    color: #ffffff;
+    color-scheme: dark;
+
+    /* ---- BACKGROUND IMAGE ----------------------------------
+       Gold line pattern that matches your homepage banner.
+       To use your own photo instead, replace the whole
+       url("data:...") below with e.g.  url("img/my-photo.jpg")
+    ---------------------------------------------------------- */
+    --popup-bg-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 800%22 preserveAspectRatio=%22xMidYMid slice%22%3E%3Cpath d=%22M581 478L567 548L703 543Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M437 327L449 425L581 478Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M668 426L703 543L800 582Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M209 541L108 664L211 722Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M0 90L115 124L77 231Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M341 494L309 594L433 576Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M572 0L692 0L721 126Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M481 129L323 193L454 224Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.11%22/%3E%3Cpath d=%22M572 0L481 129L537 151Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M486 664L563 713L444 800Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M141 419L134 542L209 541Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M678 369L581 478L668 426Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M696 655L556 800L653 800Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.11%22/%3E%3Cpath d=%22M323 193L454 224L437 327Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M800 334L668 426M692 0L721 126M195 205L323 193M581 478L703 543M696 655L556 800M251 83L77 231M375 0L328 83M537 151L721 126M375 0L455 0M800 0L721 126M539 363L678 369M134 542L0 657M0 607L134 542M211 722L366 671M486 664L563 713M211 722L92 800M341 494L449 425M364 800L444 800M195 205L359 329M597 230L696 229M486 664L444 800M366 671L364 800M359 329L437 327M115 124L251 83M251 83L195 205M572 0L692 0M437 327L539 363M0 90L77 231M678 369L581 478M309 594L433 576M233 0L328 83M108 664L211 722M703 543L696 655M341 494L209 541M97 381L207 488M251 83L323 193M92 800L210 800M0 657L0 800%22 stroke=%22%23e0a12c%22 stroke-opacity=%220.55%22 stroke-width=%221.1%22 fill=%22none%22/%3E%3Cpath d=%22M444 800L556 800M800 723L800 800M323 193L454 224M696 655L800 723M567 548L703 543M328 83L481 129M0 203L0 340M481 129L454 224M359 329L341 494M108 664L92 800M696 229L539 363M800 241L800 334M668 426L703 543M141 419L209 541M572 0L537 151M539 363L581 478M800 444L800 582M309 594L211 722M433 576L486 664M581 478L668 426M0 657L108 664M0 0L111 0M115 124L77 231M563 713L696 655M0 492L141 419M111 0L251 83M141 419L207 488M328 83L323 193M207 488L209 541M449 425L567 548M77 231L97 381M696 229L678 369M572 0L481 129M563 713L556 800M721 126L800 241M195 205L97 381M323 193L437 327M454 224L597 230M433 576L567 548M692 0L800 0M341 494L433 576M800 0L800 123M481 129L537 151M449 425L581 478M800 582L696 655M108 664L0 800M341 494L309 594M449 425L433 576M0 90L0 203M0 340L97 381M207 488L341 494M597 230L539 363M696 229L800 241M572 0L721 126M653 800L800 800M0 90L115 124M323 193L359 329M800 123L800 241M0 492L134 542M97 381L141 419M0 340L0 492%22 stroke=%22%23e0a12c%22 stroke-opacity=%220.32%22 stroke-width=%221.1%22 fill=%22none%22/%3E%3Cpath d=%22M0 607L0 657M210 800L364 800M111 0L233 0M668 426L800 582M366 671L486 664M309 594L486 664M563 713L444 800M800 582L800 723M455 0L572 0M703 543L800 582M0 340L141 419M597 230L437 327M233 0L375 0M195 205L266 369M455 0L481 129M134 542L209 541M211 722L210 800M141 419L134 542M567 548L696 655M537 151L597 230M233 0L251 83M696 655L653 800M111 0L115 124M0 0L0 90M0 203L77 231M211 722L364 800M0 492L0 607M678 369L800 334M481 129L597 230M486 664L364 800M721 126L800 123M668 426L800 444M455 0L328 83M97 381L266 369M437 327L341 494M77 231L195 205M309 594L366 671M0 0L115 124M481 129L323 193M251 83L328 83M209 541L309 594M134 542L108 664M454 224L437 327M556 800L653 800M266 369L359 329M800 241L678 369M537 151L696 229M567 548L563 713M437 327L449 425M266 369L207 488M0 800L92 800M567 548L486 664M0 203L97 381M209 541L211 722M209 541L108 664M581 478L567 548M800 334L800 444M678 369L668 426M696 655L800 800M437 327L581 478M721 126L696 229M266 369L341 494%22 stroke=%22%23e0a12c%22 stroke-opacity=%220.16%22 stroke-width=%221.1%22 fill=%22none%22/%3E%3Ccircle cx=%22454%22 cy=%22224%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%220%22 cy=%22340%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%220%22 cy=%22492%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22364%22 cy=%22800%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22141%22 cy=%22419%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22692%22 cy=%220%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22266%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22323%22 cy=%22193%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22209%22 cy=%22541%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22359%22 cy=%22329%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22266%22 cy=%22369%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22486%22 cy=%22664%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22696%22 cy=%22229%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%220%22 cy=%2290%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22537%22 cy=%22151%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22328%22 cy=%2283%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%220%22 cy=%220%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22266%22 cy=%22369%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22323%22 cy=%22193%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22111%22 cy=%220%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22115%22 cy=%22124%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22800%22 cy=%22723%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22678%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%220%22 cy=%220%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22653%22 cy=%22800%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22678%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22111%22 cy=%220%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22678%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22449%22 cy=%22425%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22696%22 cy=%22229%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22696%22 cy=%22229%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22251%22 cy=%2283%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22800%22 cy=%22123%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%220%22 cy=%22340%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3C/svg%3E");
+
+    background:
+        /* soft gold light from the top */
+        radial-gradient(90% 60% at 50% 0%,
+            rgba(224, 161, 44, 0.10),
+            transparent 70%),
+        /* dark centre so the form stays easy to read */
+        radial-gradient(ellipse 78% 68% at 50% 50%,
+            rgba(8, 8, 8, 0.86) 34%,
+            transparent 100%),
+        /* the image */
+        var(--popup-bg-image) center / cover no-repeat,
+        /* black base */
+        linear-gradient(180deg,
+            var(--glass-fill-top) 0%,
+            var(--glass-fill-bottom) 100%);
+
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.85),
+        0 0 70px rgba(224, 161, 44, 0.10),
+        0 1px 0 rgba(255, 255, 255, 0.10) inset;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 2999;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.ds-auto-popup.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* thin gold line along the top edge */
+.ds-auto-popup::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 14%;
+    right: 14%;
+
+    height: 2px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            var(--glass-accent-2),
+            transparent);
+
+    pointer-events: none;
+}
+
+.ds-auto-popup::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ds-auto-popup::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+
+    border-radius: 6px;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.ds-auto-close {
+    position: absolute;
+
+    top: 18px;
+    right: 20px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.ds-auto-close:hover {
+    background: rgba(255, 255, 255, 0.18);
+
+    border-color: var(--glass-accent);
+
+    color: #ffffff;
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   HEADER  (centered, like the reference)
+========================================================= */
+
+.ds-auto-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 26px;
+
+    text-align: center;
+}
+
+/* brand logo at the top of the popup */
+.ds-auto-logo {
+    margin-bottom: 14px;
+
+    line-height: 0;
+}
+
+.ds-auto-logo img {
+    display: block;
+
+    width: 64px;
+    height: 64px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 0 16px rgba(224, 161, 44, 0.45));
+}
+
+.ds-auto-header h2 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+
+.ds-auto-header h2 span {
+    background:
+        linear-gradient(90deg,
+            var(--glass-accent-2),
+            var(--glass-accent));
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.ds-auto-subtitle {
+    max-width: 460px;
+
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   FORM + GRID
+========================================================= */
+
+.ds-auto-project-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.ds-auto-form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px 18px;
+}
+
+.ds-auto-field {
+    width: 100%;
+
+    min-width: 0;
+}
+
+.ds-auto-label {
+    display: block;
+
+    margin: 0 0 7px 4px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    line-height: 1;
+
+    text-transform: none;
+}
+
+
+/* =========================================================
+   INPUTS  (theme adds margin-bottom:30px — reset it)
+========================================================= */
+
+.ds-auto-project-form input,
+.ds-auto-project-form textarea,
+.ds-auto-project-form select {
+    margin: 0;
+
+    font-family: inherit;
+    letter-spacing: 0;
+
+    text-transform: none !important;
+}
+
+.ds-auto-field > input,
+.ds-auto-field > textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background: var(--glass-field);
+
+    border: 1px solid var(--glass-field-border);
+    border-radius: 14px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    outline: none;
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.10) inset;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ds-auto-field > input {
+    height: 50px;
+
+    padding: 0 16px;
+}
+
+.ds-auto-field > textarea {
+    display: block;
+
+    min-height: 96px;
+
+    padding: 13px 16px;
+
+    resize: vertical;
+}
+
+.ds-auto-project-form ::placeholder {
+    color: rgba(255, 255, 255, 0.50);
+
+    opacity: 1;
+
+    /* the theme makes placeholders UPPERCASE + spaced — undo that */
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.ds-auto-field > input:hover,
+.ds-auto-field > textarea:hover {
+    background: #1b1b1b;
+}
+
+/* shared focus look */
+.ds-auto-field > input:focus,
+.ds-auto-field > textarea:focus,
+.ds-auto-phone-group:focus-within,
+.ds-auto-budget-group:focus-within,
+.ds-auto-services-multiselect.active .ds-auto-services-select-btn {
+    background: #1b1b1b;
+
+    border-color: var(--glass-accent);
+
+    box-shadow:
+        0 0 0 4px rgba(224, 161, 44, 0.16);
+}
+
+/* stop Chrome's white autofill box from breaking the glass look */
+.ds-auto-project-form input:-webkit-autofill,
+.ds-auto-project-form input:-webkit-autofill:hover,
+.ds-auto-project-form input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff;
+
+    caret-color: #ffffff;
+
+    transition: background-color 99999s ease-in-out 0s;
+}
+
+
+/* =========================================================
+   PHONE + BUDGET (select + input in one glass box)
+========================================================= */
+
+.ds-auto-phone-group,
+.ds-auto-budget-group {
+    width: 100%;
+    height: 50px;
+
+    display: grid;
+
+    grid-template-columns: 118px 1fr;
+
+    overflow: hidden;
+
+    background: var(--glass-field);
+
+    border: 1px solid var(--glass-field-border);
+    border-radius: 14px;
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.10) inset;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ds-auto-phone-group:hover,
+.ds-auto-budget-group:hover {
+    background: #1b1b1b;
+}
+
+.ds-auto-phone-group select,
+.ds-auto-phone-group input,
+.ds-auto-budget-group select,
+.ds-auto-budget-group input {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-shadow: none;
+}
+
+.ds-auto-phone-group input,
+.ds-auto-budget-group input {
+    padding: 0 16px;
+}
+
+.ds-auto-phone-group select,
+.ds-auto-budget-group select {
+    padding: 0 30px 0 14px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+
+    color: var(--glass-accent-2);
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* custom gold chevron */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23f7cf7a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+/* native option lists */
+.ds-auto-project-form option {
+    background: #161616;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SERVICES MULTI-SELECT
+========================================================= */
+
+.ds-auto-services-multiselect {
+    position: relative;
+
+    width: 100%;
+}
+
+.ds-auto-services-select-btn {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--glass-field);
+
+    border: 1px solid var(--glass-field-border);
+    border-radius: 14px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-family: inherit;
+    font-size: 14px;
+    text-align: left;
+
+    cursor: pointer;
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.10) inset;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ds-auto-services-select-btn:hover {
+    background: #1b1b1b;
+}
+
+.ds-auto-services-select-btn i {
+    flex-shrink: 0;
+
+    margin-left: 10px;
+
+    color: var(--glass-accent-2);
+
+    font-size: 12px;
+
+    transition: transform 0.2s ease;
+}
+
+.ds-auto-services-multiselect.active .ds-auto-services-select-btn i {
+    transform: rotate(180deg);
+}
+
+/* dropdown panel */
+.ds-auto-services-options {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    left: 0;
+
+    width: 100%;
+    max-height: 220px;
+
+    overflow-y: auto;
+
+    display: none;
+
+    padding: 8px;
+
+    box-sizing: border-box;
+
+    background: #141414;
+
+    border: 1px solid rgba(224, 161, 44, 0.30);
+    border-radius: 14px;
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.70);
+
+    z-index: 30;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.ds-auto-services-multiselect.active .ds-auto-services-options {
+    display: block;
+}
+
+.ds-auto-services-options label {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0;
+    padding: 9px 12px;
+
+    border-radius: 9px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.ds-auto-services-options label:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.ds-auto-services-options input {
+    width: 15px;
+    height: 15px;
+
+    margin: 0;
+
+    accent-color: var(--glass-accent);
+}
+
+
+/* =========================================================
+   STATUS  (js sets .success / .error)
+========================================================= */
+
+.ds-auto-form-status {
+    display: none;
+
+    padding: 11px 14px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+}
+
+.ds-auto-form-status.success {
+    display: block;
+
+    color: #b8f5cf;
+
+    border: 1px solid rgba(120, 230, 170, 0.35);
+
+    background: rgba(120, 230, 170, 0.10);
+}
+
+.ds-auto-form-status.error {
+    display: block;
+
+    color: #ffb3b3;
+
+    border: 1px solid rgba(255, 110, 110, 0.35);
+
+    background: rgba(255, 110, 110, 0.10);
+}
+
+
+/* =========================================================
+   ACTIONS  (small centered submit button)
+========================================================= */
+
+.ds-auto-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 6px;
+}
+
+.ds-auto-submit {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    width: 220px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 48px;
+
+    padding: 6px 6px 6px 24px;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 40px;
+
+    background:
+        linear-gradient(135deg,
+            var(--glass-accent-2) 0%,
+            var(--glass-accent) 100%);
+
+    color: #1a1204;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 26px rgba(224, 161, 44, 0.30),
+        0 1px 0 rgba(255, 255, 255, 0.55) inset;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        opacity 0.3s ease;
+}
+
+/* glossy sweep on hover */
+.ds-auto-submit::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -60%;
+
+    width: 40%;
+    height: 100%;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.45),
+            transparent);
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+
+    pointer-events: none;
+}
+
+.ds-auto-submit:hover::before {
+    left: 130%;
+}
+
+.ds-auto-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 34px rgba(224, 161, 44, 0.42),
+        0 1px 0 rgba(255, 255, 255, 0.55) inset;
+}
+
+.ds-auto-submit:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+.ds-auto-submit-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(20, 14, 4, 0.88);
+
+    color: var(--glass-accent-2);
+}
+
+.ds-auto-note {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.ds-auto-note i {
+    margin-right: 5px;
+
+    color: var(--glass-accent-2);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   HIDE THE FLOATING "START A PROJECT" TAB WHILE OPEN
+========================================================= */
+
+body:has(.ds-auto-popup.active) .ds-form-trigger {
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .ds-auto-popup {
+        width: 92vw;
+        max-height: 90vh;
+
+        padding: 30px 20px 24px;
+
+        border-radius: 20px;
+    }
+
+    .ds-auto-header {
+        margin-bottom: 22px;
+    }
+
+    .ds-auto-header h2 {
+        font-size: 27px;
+    }
+
+    .ds-auto-subtitle {
+        font-size: 13px;
+    }
+
+    .ds-auto-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ds-auto-submit {
+        width: 100%;
+        max-width: 260px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALLER LAPTOP SCREENS (short height) — tighten spacing
+========================================================= */
+
+@media (max-height: 780px) and (min-width: 701px) {
+
+    .ds-auto-popup {
+        padding-top: 28px;
+        padding-bottom: 22px;
+    }
+
+    .ds-auto-header {
+        margin-bottom: 18px;
+    }
+
+    .ds-auto-logo {
+        margin-bottom: 10px;
+    }
+
+    .ds-auto-logo img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .ds-auto-header h2 {
+        font-size: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / FALLBACKS
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ds-auto-popup,
+    .ds-auto-overlay {
+        transition: none;
+    }
+
+}
+/* =========================================================
+   custom.css — additions/overrides for requested changes
+   ========================================================= */
+
+/* ---- Fix E: form placeholder/labels were forced UPPERCASE, make normal case ---- */
+#contact input::placeholder,
+#contact textarea::placeholder,
+#contact select,
+.mil-subscribe-form input::placeholder,
+.mil-subscribe-form-2 input::placeholder,
+.mil-contact-form input::placeholder,
+.mil-contact-form textarea::placeholder,
+.mil-contact-form label,
+.mil-contact-form select,
+.mil-office-carousel,
+.mil-currency-select,
+.mil-country-code-select {
+  text-transform: none !important;
+}
+
+/* ---- Language switcher ---- */
+.mil-lang-switcher{
+  position:fixed;
+  top:24px;
+  right:110px;
+  z-index:1000;
+}
+.mil-lang-current{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.25);
+  color:#fff;
+  padding:8px 12px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:13px;
+  backdrop-filter: blur(4px);
+}
+body.mil-light-theme-page .mil-lang-current{
+  background:rgba(0,0,0,.05);
+  border-color:rgba(0,0,0,.2);
+  color:#111;
+}
+.mil-lang-flag{ font-size:16px; line-height:1; }
+.mil-lang-list{
+  display:none;
+  position:absolute;
+  right:0;
+  top:calc(100% + 8px);
+  background:#111;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:10px;
+  min-width:170px;
+  padding:6px;
+  list-style:none;
+  margin:0;
+}
+.mil-lang-list.mil-open{ display:block; }
+.mil-lang-list li button{
+  width:100%;
+  text-align:left;
+  background:none;
+  border:0;
+  color:#eee;
+  padding:8px 10px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:13px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.mil-lang-list li button:hover{ background:rgba(255,255,255,.1); }
+[dir="rtl"] .mil-lang-switcher{ right:auto; left:110px; }
+
+/* ---- Services menu (mega list w/ sub-services) ---- */
+#servicesMenuList{ max-height:60vh; overflow-y:auto; }
+.mil-service-menu-group{ padding:6px 0; }
+.mil-service-menu-group > a{
+  color:#ff9c00 !important;
+  font-weight:600;
+  display:block;
+  padding:6px 0;
+}
+.mil-service-menu-group ul{
+  list-style:none;
+  margin:0 0 6px 12px;
+  padding:0;
+}
+.mil-service-menu-group ul li a{
+  font-size:13px !important;
+  opacity:.8;
+  padding:3px 0 !important;
+  display:block;
+}
+
+@media (max-width: 768px){ /* shubham */
+ .mil-service-menu-group ul li a{
+    font-size: 9px !important;
+    /* text-align: center */
+ }
+}
+
+@media (max-width: 992px) {
+  .mil-service-menu-group > .mil-submenu {
+    position: static;
+    max-height: 0;
+    overflow: hidden;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  .mil-service-menu-group > .mil-submenu.mil-active {
+    /* max-height is set inline by openSubmenu() */
+  }
+}
+
+
+/* ---- Office / map carousel (footer + contact) ---- */
+.mil-office-carousel{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:20px;
+  padding:30px 10px;
+  border-top:1px solid rgba(255,255,255,.1);
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.mil-office-arrow{
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,.3);
+  background:transparent;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  transition:.25s;
+}
+.mil-office-arrow:hover{ background:#ff9c00; border-color:#ff9c00; }
+.mil-office-slide{ flex:1 1 auto; text-align:center; }
+.mil-office-name{ margin-bottom:8px; }
+.mil-office-address{ max-width:640px; margin:0 auto 8px; }
+.mil-office-phone{ margin-bottom:8px; }
+.mil-office-gmb{ display:inline-block; }
+.mil-office-dots{
+  position:absolute;
+  bottom:6px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:6px;
+}
+.mil-office-dots span{
+  width:7px; height:7px; border-radius:50%;
+  background:rgba(255,255,255,.3);
+  cursor:pointer;
+}
+.mil-office-dots span.mil-active{ background:#ff9c00; }
+
+/* Map cards on contact page — consistent sizing + carousel */
+.mil-map-carousel-frame{
+  width:100%;
+  height:420px;
+  border-radius:12px;
+  overflow:hidden;
+  position:relative;
+}
+.mil-map-carousel-frame iframe{
+  width:100%;
+  height:100%;
+  border:0;
+  display:block;
+}
+.mil-map-office-label{
+  position:absolute;
+  left:20px;
+  top:20px;
+  background:rgba(0,0,0,.75);
+  color:#fff;
+  padding:12px 18px;
+  border-radius:10px;
+  max-width:320px;
+  font-size:13px;
+  line-height:1.5;
+  z-index:2;
+}
+.mil-map-office-label h6{ margin:0 0 6px; color:#fff; }
+.mil-map-office-label a{ color:#ff9c00; }
+
+/* ---- Contact form field groups: country code + currency ---- */
+.mil-phone-group{ display:flex; gap:10px; align-items:flex-end; }
+.mil-phone-group select{
+  width:110px;
+  flex:0 0 auto;
+}
+.mil-phone-group input{ flex:1 1 auto; }
+
+.mil-budget-group{ display:flex; gap:10px; width:100%; }
+.mil-budget-group select{ width:120px; flex:0 0 auto; }
+.mil-budget-group input{ flex:1 1 auto; }
+
+.mil-required-mark{ color:#ff5a5a; margin-left:2px; }
+
+/* generic select styling to match theme inputs */
+#contact select, .mil-phone-group select, .mil-budget-group select{
+  height:70px;
+  border:none;
+  border-bottom:solid 1px rgba(0,0,0,.2);
+  background:transparent;
+  font-size:14px;
+}
+
+/* Service accordion sub-service links */
+.mil-service-sub-link{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  margin-top:8px;
+  font-size:13px;
+}
+
+.mil-visually-hidden{
+  position:absolute !important;
+  width:1px; height:1px;
+  padding:0; margin:-1px;
+  overflow:hidden;
+  clip:rect(0,0,0,0);
+  white-space:nowrap;
+  border:0;
+}
+.mil-legal-copy p{ margin-bottom:14px; line-height:1.7; }
+.mil-legal-copy ul, .mil-legal-copy ol{ margin:0 0 16px 22px; }
+.mil-legal-copy li{ margin-bottom:8px; }
+
+/* ---- Hide Google Translate's default toolbar/banner UI — we drive
+   translation entirely through our own flag menu ---- */
+.mil-goog-hidden{ display:none !important; }
+body{ top:0 !important; position:static !important; }
+.goog-te-banner-frame.skiptranslate,
+.goog-te-gadget-icon,
+#goog-gt-tt, .goog-te-balloon-frame,
+.goog-tooltip, .goog-tooltip:hover,
+.goog-text-highlight{ display:none !important; background:none !important; box-shadow:none !important; }
+iframe.goog-te-banner-frame{ display:none !important; }
+.goog-te-gadget{ height:0 !important; overflow:hidden !important; font-size:0 !important; }
+.goog-te-menu-value{ display:none !important; }
+
+@media (max-width: 768px){
+  .mil-lang-switcher{ top:16px; right:80px; }
+  .mil-office-carousel{ flex-direction:column; }
+  .mil-map-carousel-frame{ height:300px; }
+}
+
+
+
+/* =========================================================
+   DEEPSHITECH SIDE CONTACT DRAWER
+========================================================= */
+
+:root {
+    --ds-gold: #C78C24;
+    --ds-black: #0a0a0a;
+    --ds-panel: #111111;
+    --ds-field: #171717;
+    --ds-border: rgba(255, 255, 255, 0.12);
+    --ds-text: rgba(255, 255, 255, 0.72);
+}
+
+
+/* =========================================
+   VERTICAL FORM TRIGGER
+========================================= */
+
+.ds-form-trigger {
+    position: fixed;
+
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+
+    z-index: 1200;
+
+    /* Vertical button size */
+    width: 48px;
+    height: 125px;
+
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Website gold theme — lighter gradient + softer font */
+    background: linear-gradient(180deg, #f2c169, #e0a53a);
+    color: #241804;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-right: 0;
+
+    border-radius: 14px 0 0 14px;
+
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+
+    /* Makes text vertical */
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+
+    cursor: pointer;
+
+    box-shadow: -4px 4px 15px rgba(0, 0, 0, 0.18);
+
+    transition:
+        opacity 0.25s ease,
+        visibility 0.25s ease,
+        transform 0.3s ease,
+        background 0.3s ease;
+}
+
+
+/* Hide trigger when popup is open */
+.ds-form-trigger.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transform: translateY(-50%) translateX(100%);
+}
+
+
+/* Icon if you use it later */
+.ds-form-trigger i {
+    color: #241804;
+}
+
+
+/* Hover */
+.ds-form-trigger:hover {
+    background: linear-gradient(180deg, #f7cf7e, #e8ae44);
+
+    transform: translateY(-50%) translateX(-2px);
+}
+
+
+/* Hover icon */
+.ds-form-trigger:hover i {
+    color: #241804;
+}
+
+/* overlay */
+
+.ds-form-overlay {
+    position: fixed;
+    inset: 0;
+
+    z-index: 1998;
+
+    background: rgba(0, 0, 0, 0.58);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: 0.35s ease;
+}
+
+.ds-form-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+/* drawer */
+
+.ds-form-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+
+    z-index: 1999;
+
+    width: min(510px, 90vw);
+    height: 100vh;
+
+    overflow-y: auto;
+
+    background:
+        linear-gradient(
+            180deg,
+            #0b0b0b 0%,
+            #101010 100%
+        );
+
+    border-left: 1px solid rgba(209, 148, 31, 0.35);
+
+    box-shadow:
+        -25px 0 70px rgba(0, 0, 0, 0.45);
+
+    transform: translateX(102%);
+
+    transition:
+        transform 0.55s cubic-bezier(.22, 1, .36, 1);
+}
+
+.ds-form-drawer.active {
+    transform: translateX(0);
+}
+
+
+/* scrollbar */
+
+.ds-form-drawer::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ds-form-drawer::-webkit-scrollbar-track {
+    background: #0b0b0b;
+}
+
+.ds-form-drawer::-webkit-scrollbar-thumb {
+    background: rgba(209, 148, 31, 0.5);
+}
+
+
+/* close */
+
+.ds-form-close {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+
+    z-index: 2;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+
+    background: transparent;
+
+    color: rgba(255,255,255,0.7);
+
+    font-size: 21px;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.ds-form-close:hover {
+    color: var(--ds-gold);
+    transform: rotate(90deg);
+}
+
+
+/* intro */
+
+.ds-form-intro {
+    padding: 70px 46px 28px;
+}
+
+.ds-form-kicker {
+    display: block;
+
+    margin-bottom: 10px;
+
+    color: var(--ds-gold);
+
+    font-size: 11px;
+    letter-spacing: 2.2px;
+    font-weight: 600;
+}
+
+
+.ds-form-main-heading {
+    margin: 0;
+    font-family: inherit;
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: #b97d10;
+}
+
+
+/* divider */
+
+.ds-form-divider {
+    height: 1px;
+
+    background: rgba(209, 148, 31, 0.28);
+}
+
+
+/* form content */
+
+.ds-form-content {
+    padding: 24px 46px 40px;
+}
+
+.ds-form-content h3 {
+    margin: 0 0 30px;
+
+    color: #fff;
+
+    font-family: Georgia, "Times New Roman", serif;
+
+    font-size: 25px;
+    font-weight: 600;
+}
+
+
+/* form */
+
+.ds-project-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+
+.ds-form-row {
+ display: contents;
+}
+
+/* field */
+
+.ds-field label {
+    display: block;
+
+    /* margin-bottom: 0px; */
+
+    color: rgba(255,255,255,0.55);
+
+    font-size: 11px;
+    letter-spacing: 0.5px;
+}
+
+.ds-field input,
+.ds-field select,
+.ds-field textarea {
+    width: 100%;
+
+    padding: 10px 14px;
+
+    border: 1px solid var(--ds-border);
+    border-radius: 6px;
+    background: var(--ds-field);
+    color: #fff;
+    font-size: 14px;
+    text-transform: none;
+    outline: none;
+    transition: 0.25s ease;
+}
+
+.ds-field input::placeholder,
+.ds-field textarea::placeholder {
+    color: rgba(255,255,255,0.35);
+    text-transform: none;
+}
+
+.ds-field input:focus,
+.ds-field select:focus,
+.ds-field textarea:focus {
+    border-color:
+        rgba(209, 148, 31, 0.75);
+
+    background: #191919;
+}
+
+.ds-field > input {
+    height: 42px;
+}
+
+
+/* phone */
+
+.ds-phone-group {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    margin-bottom: 0px;
+}
+
+.ds-phone-group select {
+    border-radius: 6px 0 0 6px;
+
+    border-right: 0;
+
+    color: var(--ds-gold);
+    font-weight: 600;
+}
+
+.ds-phone-group input {
+    border-radius: 0 6px 6px 0;
+}
+
+.ds-phone-group select,
+.ds-phone-group input {
+    height: 42px;
+}
+
+.ds-country-code {
+    padding-left: 5px !important;
+    padding-right: 22px !important;
+    font-size: 13px;
+}
+
+/* budget */
+
+.ds-budget-group {
+    display: grid;
+    grid-template-columns: 110px 1fr;
+    margin-bottom: 0px;
+}
+
+.ds-budget-group select {
+    border-radius: 6px 0 0 6px;
+
+    border-right: 0;
+
+    color: var(--ds-gold);
+    font-weight: 600;
+}
+
+.ds-budget-group input {
+    border-radius: 0 6px 6px 0;
+}
+
+.ds-budget-group select,
+.ds-budget-group input {
+    height: 42px;
+}
+
+
+/* textarea */
+
+.ds-field textarea {
+    min-height: 130px;
+
+    resize: vertical;
+}
+
+
+/* submit */
+
+.ds-form-submit {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 5px;
+
+    padding:
+        8px 8px 8px 22px;
+
+    border:
+        1px solid var(--ds-gold);
+
+    border-radius: 30px;
+
+    background: var(--ds-gold);
+
+    color: #000;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: 0.3s ease;
+}
+
+.ds-form-submit-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #000;
+
+    color: var(--ds-gold);
+}
+
+.ds-form-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 12px 30px rgba(209,148,31,0.16);
+}
+
+
+/* tablet */
+
+@media (max-width: 820px) {
+
+    .ds-form-drawer {
+        width: 100%;
+    }
+
+    .ds-form-intro,
+    .ds-form-content {
+        padding-left: 28px;
+        padding-right: 28px;
+    }
+
+}
+
+
+.ds-form-status {
+    display: none;
+    padding: 12px 14px;
+    border-radius: 5px;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.ds-form-status.success {
+    display: block;
+    color: #d1941f;
+    border: 1px solid rgba(209, 148, 31, 0.35);
+    background: rgba(209, 148, 31, 0.08);
+}
+
+.ds-form-status.error {
+    display: block;
+    color: #ff8a8a;
+    border: 1px solid rgba(255, 90, 90, 0.3);
+    background: rgba(255, 90, 90, 0.06);
+}
+
+/* mobile */
+
+@media (max-width: 600px) {
+
+    .ds-form-intro {
+        padding-top: 80px;
+    }
+
+    .ds-form-intro h2 {
+        font-size: 31px;
+    }
+
+    .ds-form-row {
+        grid-template-columns: 1fr;
+    }
+
+    .ds-services-list {
+        grid-template-columns:
+            repeat(2, 1fr);
+    }
+
+    .ds-form-trigger span {
+        display: none;
+    }
+
+    .ds-form-trigger {
+        padding: 15px;
+    }
+
+}
+
+
+@media (max-width: 768px) {
+
+    .ds-form-trigger {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+
+        width: 40px; /* shubham */
+        height: 130px; /* shubham */
+        padding: 0;
+
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+
+        background: linear-gradient(180deg, #f2c169, #e0a53a);
+        color: #241804;
+
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+
+        z-index: 9998;
+        overflow: visible;
+
+        border-radius: 12px 0 0 12px;
+    }
+
+    .ds-form-trigger span {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+
+        color: #241804 !important;
+        font-family: 'Outfit', sans-serif;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 1.6px;
+        text-transform: uppercase;
+
+        white-space: nowrap;
+    }
+
+}
+
+
+/* =========================================
+   MULTI SERVICE DROPDOWN
+========================================= */
+
+.ds-services-multiselect {
+    position: relative;
+    width: 100%;
+}
+
+.ds-services-select-btn {
+    width: 100%;
+    height: 42px;
+
+    padding: 0 14px;
+    margin-bottom: 15px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--ds-field);
+    border: 1px solid var(--ds-border);
+    border-radius: 6px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-family: inherit;
+    font-size: 14px;
+    text-align: left;
+
+    cursor: pointer;
+    outline: none;
+}
+
+.ds-services-select-btn i {
+    color: var(--ds-gold);
+    font-size: 11px;
+    transition: transform 0.2s ease;
+}
+
+
+/* DROPDOWN */
+
+.ds-services-options {
+    position: absolute;
+
+    top: calc(100% + 5px);
+    left: 0;
+
+    width: 100%;
+    max-height: 230px;
+
+    overflow-y: auto;
+
+    padding: 6px 0;
+
+    background: #171717;
+
+    border: 1px solid var(--ds-border);
+    border-radius: 6px;
+
+    z-index: 50;
+
+    display: none;
+}
+
+.ds-services-multiselect.active .ds-services-options {
+    display: block;
+}
+
+.ds-services-multiselect.active .ds-services-select-btn {
+    border-color: var(--ds-gold);
+}
+
+.ds-services-multiselect.active .ds-services-select-btn i {
+    transform: rotate(180deg);
+}
+
+
+/* EACH OPTION */
+
+.ds-services-options label {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 10px 14px;
+
+    margin: 0;
+
+    color: rgba(255,255,255,0.72);
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: background 0.2s ease;
+}
+
+.ds-services-options label:hover {
+    background: rgba(199, 140, 36, 0.10);
+}
+
+
+/* CHECKBOX */
+
+.ds-services-options input {
+    width: 15px;
+    height: 15px;
+
+    margin: 0;
+
+    flex-shrink: 0;
+
+    accent-color: var(--ds-gold);
+}
+
+
+/* SCROLLBAR */
+
+.ds-services-options::-webkit-scrollbar {
+    width: 5px;
+}
+
+.ds-services-options::-webkit-scrollbar-track {
+    background: #111;
+}
+
+.ds-services-options::-webkit-scrollbar-thumb {
+    background: var(--ds-gold);
+}
+
+
+/* =========================================================
+   AUTO CENTER POPUP — BLACK & GOLD THEME (complete replacement)
+
+   In css/custom.css: delete the old block that starts with
+   "AUTO CENTER POPUP" (down to the end of the file) and paste
+   this in its place.
+
+   Colour mood → only edit the variables in the first block.
+========================================================= */
+
+.ds-auto-overlay,
+.ds-auto-popup {
+    /* brand gold (matches the rest of the site) */
+    --glass-accent: #e0a12c;
+    --glass-accent-2: #f7cf7a;
+
+    /* soft gold light behind the card */
+    --glass-blob-1: rgba(224, 161, 44, 0.16);
+
+    /* black card */
+    --glass-fill-top: #121212;
+    --glass-fill-bottom: #070707;
+    --glass-border: rgba(224, 161, 44, 0.32);
+    --glass-field: rgba(20, 20, 20, 0.82);
+    --glass-field-border: rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   OVERLAY  (black backdrop + soft gold glow in the centre)
+========================================================= */
+
+.ds-auto-overlay {
+    position: fixed;
+    inset: 0;
+
+    overflow: hidden;
+
+    background: rgba(0, 0, 0, 0.88);
+
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 2998;
+
+    transition:
+        opacity 0.3s ease,
+        visibility 0.3s ease;
+}
+
+.ds-auto-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ds-auto-overlay::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 70vmin;
+    height: 70vmin;
+
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(circle,
+            var(--glass-blob-1),
+            transparent 68%);
+
+    filter: blur(40px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   POPUP — the glass card
+========================================================= */
+
+.ds-auto-popup {
+    position: fixed;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%) scale(0.95);
+
+    width: min(800px, 94vw);
+    max-height: 92vh;
+
+    overflow-y: auto;
+
+    padding: 38px 44px 30px;
+
+    box-sizing: border-box;
+
+    color: #ffffff;
+    color-scheme: dark;
+
+    /* ---- BACKGROUND IMAGE ----------------------------------
+       Gold line pattern that matches your homepage banner.
+       To use your own photo instead, replace the whole
+       url("data:...") below with e.g.  url("img/my-photo.jpg")
+    ---------------------------------------------------------- */
+    --popup-bg-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 800%22 preserveAspectRatio=%22xMidYMid slice%22%3E%3Cpath d=%22M581 478L567 548L703 543Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M437 327L449 425L581 478Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M668 426L703 543L800 582Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M209 541L108 664L211 722Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M0 90L115 124L77 231Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M341 494L309 594L433 576Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M572 0L692 0L721 126Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M481 129L323 193L454 224Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.11%22/%3E%3Cpath d=%22M572 0L481 129L537 151Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M486 664L563 713L444 800Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M141 419L134 542L209 541Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M678 369L581 478L668 426Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M696 655L556 800L653 800Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.11%22/%3E%3Cpath d=%22M323 193L454 224L437 327Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M800 334L668 426M692 0L721 126M195 205L323 193M581 478L703 543M696 655L556 800M251 83L77 231M375 0L328 83M537 151L721 126M375 0L455 0M800 0L721 126M539 363L678 369M134 542L0 657M0 607L134 542M211 722L366 671M486 664L563 713M211 722L92 800M341 494L449 425M364 800L444 800M195 205L359 329M597 230L696 229M486 664L444 800M366 671L364 800M359 329L437 327M115 124L251 83M251 83L195 205M572 0L692 0M437 327L539 363M0 90L77 231M678 369L581 478M309 594L433 576M233 0L328 83M108 664L211 722M703 543L696 655M341 494L209 541M97 381L207 488M251 83L323 193M92 800L210 800M0 657L0 800%22 stroke=%22%23e0a12c%22 stroke-opacity=%220.55%22 stroke-width=%221.1%22 fill=%22none%22/%3E%3Cpath d=%22M444 800L556 800M800 723L800 800M323 193L454 224M696 655L800 723M567 548L703 543M328 83L481 129M0 203L0 340M481 129L454 224M359 329L341 494M108 664L92 800M696 229L539 363M800 241L800 334M668 426L703 543M141 419L209 541M572 0L537 151M539 363L581 478M800 444L800 582M309 594L211 722M433 576L486 664M581 478L668 426M0 657L108 664M0 0L111 0M115 124L77 231M563 713L696 655M0 492L141 419M111 0L251 83M141 419L207 488M328 83L323 193M207 488L209 541M449 425L567 548M77 231L97 381M696 229L678 369M572 0L481 129M563 713L556 800M721 126L800 241M195 205L97 381M323 193L437 327M454 224L597 230M433 576L567 548M692 0L800 0M341 494L433 576M800 0L800 123M481 129L537 151M449 425L581 478M800 582L696 655M108 664L0 800M341 494L309 594M449 425L433 576M0 90L0 203M0 340L97 381M207 488L341 494M597 230L539 363M696 229L800 241M572 0L721 126M653 800L800 800M0 90L115 124M323 193L359 329M800 123L800 241M0 492L134 542M97 381L141 419M0 340L0 492%22 stroke=%22%23e0a12c%22 stroke-opacity=%220.32%22 stroke-width=%221.1%22 fill=%22none%22/%3E%3Cpath d=%22M0 607L0 657M210 800L364 800M111 0L233 0M668 426L800 582M366 671L486 664M309 594L486 664M563 713L444 800M800 582L800 723M455 0L572 0M703 543L800 582M0 340L141 419M597 230L437 327M233 0L375 0M195 205L266 369M455 0L481 129M134 542L209 541M211 722L210 800M141 419L134 542M567 548L696 655M537 151L597 230M233 0L251 83M696 655L653 800M111 0L115 124M0 0L0 90M0 203L77 231M211 722L364 800M0 492L0 607M678 369L800 334M481 129L597 230M486 664L364 800M721 126L800 123M668 426L800 444M455 0L328 83M97 381L266 369M437 327L341 494M77 231L195 205M309 594L366 671M0 0L115 124M481 129L323 193M251 83L328 83M209 541L309 594M134 542L108 664M454 224L437 327M556 800L653 800M266 369L359 329M800 241L678 369M537 151L696 229M567 548L563 713M437 327L449 425M266 369L207 488M0 800L92 800M567 548L486 664M0 203L97 381M209 541L211 722M209 541L108 664M581 478L567 548M800 334L800 444M678 369L668 426M696 655L800 800M437 327L581 478M721 126L696 229M266 369L341 494%22 stroke=%22%23e0a12c%22 stroke-opacity=%220.16%22 stroke-width=%221.1%22 fill=%22none%22/%3E%3Ccircle cx=%22454%22 cy=%22224%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%220%22 cy=%22340%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%220%22 cy=%22492%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22364%22 cy=%22800%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22141%22 cy=%22419%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22692%22 cy=%220%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22266%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22323%22 cy=%22193%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22209%22 cy=%22541%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22359%22 cy=%22329%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22266%22 cy=%22369%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22486%22 cy=%22664%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22696%22 cy=%22229%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%220%22 cy=%2290%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22537%22 cy=%22151%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22328%22 cy=%2283%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%220%22 cy=%220%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22266%22 cy=%22369%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22323%22 cy=%22193%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22111%22 cy=%220%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22115%22 cy=%22124%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22800%22 cy=%22723%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22678%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%220%22 cy=%220%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22653%22 cy=%22800%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22678%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22111%22 cy=%220%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22678%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22449%22 cy=%22425%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22696%22 cy=%22229%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22696%22 cy=%22229%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22251%22 cy=%2283%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22800%22 cy=%22123%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%220%22 cy=%22340%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3C/svg%3E");
+
+    background:
+        /* soft gold light from the top */
+        radial-gradient(90% 60% at 50% 0%,
+            rgba(224, 161, 44, 0.10),
+            transparent 70%),
+        /* dark centre so the form stays easy to read */
+        radial-gradient(ellipse 78% 68% at 50% 50%,
+            rgba(8, 8, 8, 0.86) 34%,
+            transparent 100%),
+        /* the image */
+        var(--popup-bg-image) center / cover no-repeat,
+        /* black base */
+        linear-gradient(180deg,
+            var(--glass-fill-top) 0%,
+            var(--glass-fill-bottom) 100%);
+
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.85),
+        0 0 70px rgba(224, 161, 44, 0.10),
+        0 1px 0 rgba(255, 255, 255, 0.10) inset;
+
+    opacity: 0;
+    visibility: hidden;
+
+    z-index: 2999;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        visibility 0.35s ease;
+}
+
+.ds-auto-popup.active {
+    opacity: 1;
+    visibility: visible;
+
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* thin gold line along the top edge */
+.ds-auto-popup::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 14%;
+    right: 14%;
+
+    height: 2px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            var(--glass-accent-2),
+            transparent);
+
+    pointer-events: none;
+}
+
+.ds-auto-popup::-webkit-scrollbar {
+    width: 6px;
+}
+
+.ds-auto-popup::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+
+    border-radius: 6px;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+========================================================= */
+
+.ds-auto-close {
+    position: absolute;
+
+    top: 18px;
+    right: 20px;
+
+    width: 38px;
+    height: 38px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 16px;
+
+    cursor: pointer;
+
+    transition:
+        transform 0.25s ease,
+        background 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.ds-auto-close:hover {
+    background: rgba(255, 255, 255, 0.18);
+
+    border-color: var(--glass-accent);
+
+    color: #ffffff;
+
+    transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   HEADER  (centered, like the reference)
+========================================================= */
+
+.ds-auto-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-bottom: 26px;
+
+    text-align: center;
+}
+
+/* brand logo at the top of the popup */
+.ds-auto-logo {
+    margin-bottom: 14px;
+
+    line-height: 0;
+}
+
+.ds-auto-logo img {
+    display: block;
+
+    width: 64px;
+    height: 64px;
+
+    object-fit: contain;
+
+    filter: drop-shadow(0 0 16px rgba(224, 161, 44, 0.45));
+}
+
+.ds-auto-header h2 {
+    margin: 0 0 8px;
+
+    color: #ffffff;
+
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+}
+
+.ds-auto-header h2 span {
+    background:
+        linear-gradient(90deg,
+            var(--glass-accent-2),
+            var(--glass-accent));
+
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.ds-auto-subtitle {
+    max-width: 460px;
+
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.72);
+
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   FORM + GRID
+========================================================= */
+
+.ds-auto-project-form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 16px;
+}
+
+.ds-auto-form-grid {
+    display: grid;
+
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 16px 18px;
+}
+
+.ds-auto-field {
+    width: 100%;
+
+    min-width: 0;
+}
+
+.ds-auto-label {
+    display: block;
+
+    margin: 0 0 7px 4px;
+
+    color: rgba(255, 255, 255, 0.75);
+
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+    line-height: 1;
+
+    text-transform: none;
+}
+
+
+/* =========================================================
+   INPUTS  (theme adds margin-bottom:30px — reset it)
+========================================================= */
+
+.ds-auto-project-form input,
+.ds-auto-project-form textarea,
+.ds-auto-project-form select {
+    margin: 0;
+
+    font-family: inherit;
+    letter-spacing: 0;
+
+    text-transform: none !important;
+}
+
+.ds-auto-field > input,
+.ds-auto-field > textarea {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    background: var(--glass-field);
+
+    border: 1px solid var(--glass-field-border);
+    border-radius: 14px;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    outline: none;
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.10) inset;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ds-auto-field > input {
+    height: 50px;
+
+    padding: 0 16px;
+}
+
+.ds-auto-field > textarea {
+    display: block;
+
+    min-height: 96px;
+
+    padding: 13px 16px;
+
+    resize: vertical;
+}
+
+.ds-auto-project-form ::placeholder {
+    color: rgba(255, 255, 255, 0.50);
+
+    opacity: 1;
+
+    /* the theme makes placeholders UPPERCASE + spaced — undo that */
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.ds-auto-field > input:hover,
+.ds-auto-field > textarea:hover {
+    background: #1b1b1b;
+}
+
+/* shared focus look */
+.ds-auto-field > input:focus,
+.ds-auto-field > textarea:focus,
+.ds-auto-phone-group:focus-within,
+.ds-auto-budget-group:focus-within,
+.ds-auto-services-multiselect.active .ds-auto-services-select-btn {
+    background: #1b1b1b;
+
+    border-color: var(--glass-accent);
+
+    box-shadow:
+        0 0 0 4px rgba(224, 161, 44, 0.16);
+}
+
+/* stop Chrome's white autofill box from breaking the glass look */
+.ds-auto-project-form input:-webkit-autofill,
+.ds-auto-project-form input:-webkit-autofill:hover,
+.ds-auto-project-form input:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff;
+
+    caret-color: #ffffff;
+
+    transition: background-color 99999s ease-in-out 0s;
+}
+
+
+/* =========================================================
+   PHONE + BUDGET (select + input in one glass box)
+========================================================= */
+
+.ds-auto-phone-group,
+.ds-auto-budget-group {
+    width: 100%;
+    height: 50px;
+
+    display: grid;
+
+    grid-template-columns: 118px 1fr;
+
+    overflow: hidden;
+
+    background: var(--glass-field);
+
+    border: 1px solid var(--glass-field-border);
+    border-radius: 14px;
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.10) inset;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ds-auto-phone-group:hover,
+.ds-auto-budget-group:hover {
+    background: #1b1b1b;
+}
+
+.ds-auto-phone-group select,
+.ds-auto-phone-group input,
+.ds-auto-budget-group select,
+.ds-auto-budget-group input {
+    width: 100%;
+    height: 100%;
+
+    box-sizing: border-box;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    outline: none;
+
+    box-shadow: none;
+}
+
+.ds-auto-phone-group input,
+.ds-auto-budget-group input {
+    padding: 0 16px;
+}
+
+.ds-auto-phone-group select,
+.ds-auto-budget-group select {
+    padding: 0 30px 0 14px;
+
+    border-right: 1px solid rgba(255, 255, 255, 0.16);
+
+    color: var(--glass-accent-2);
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    /* custom gold chevron */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1.5l5 5 5-5' fill='none' stroke='%23f7cf7a' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+}
+
+/* native option lists */
+.ds-auto-project-form option {
+    background: #161616;
+
+    color: #ffffff;
+}
+
+
+/* =========================================================
+   SERVICES MULTI-SELECT
+========================================================= */
+
+.ds-auto-services-multiselect {
+    position: relative;
+
+    width: 100%;
+}
+
+.ds-auto-services-select-btn {
+    width: 100%;
+    height: 50px;
+
+    padding: 0 16px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--glass-field);
+
+    border: 1px solid var(--glass-field-border);
+    border-radius: 14px;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-family: inherit;
+    font-size: 14px;
+    text-align: left;
+
+    cursor: pointer;
+
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.10) inset;
+
+    transition:
+        border-color 0.25s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.ds-auto-services-select-btn:hover {
+    background: #1b1b1b;
+}
+
+.ds-auto-services-select-btn i {
+    flex-shrink: 0;
+
+    margin-left: 10px;
+
+    color: var(--glass-accent-2);
+
+    font-size: 12px;
+
+    transition: transform 0.2s ease;
+}
+
+.ds-auto-services-multiselect.active .ds-auto-services-select-btn i {
+    transform: rotate(180deg);
+}
+
+/* dropdown panel */
+.ds-auto-services-options {
+    position: absolute;
+
+    top: calc(100% + 8px);
+    left: 0;
+
+    width: 100%;
+    max-height: 220px;
+
+    overflow-y: auto;
+
+    display: none;
+
+    padding: 8px;
+
+    box-sizing: border-box;
+
+    background: #141414;
+
+    border: 1px solid rgba(224, 161, 44, 0.30);
+    border-radius: 14px;
+
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.70);
+
+    z-index: 30;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.ds-auto-services-multiselect.active .ds-auto-services-options {
+    display: block;
+}
+
+.ds-auto-services-options label {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    margin: 0;
+    padding: 9px 12px;
+
+    border-radius: 9px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    font-size: 13px;
+
+    cursor: pointer;
+}
+
+.ds-auto-services-options label:hover {
+    background: rgba(255, 255, 255, 0.10);
+}
+
+.ds-auto-services-options input {
+    width: 15px;
+    height: 15px;
+
+    margin: 0;
+
+    accent-color: var(--glass-accent);
+}
+
+
+/* =========================================================
+   STATUS  (js sets .success / .error)
+========================================================= */
+
+.ds-auto-form-status {
+    display: none;
+
+    padding: 11px 14px;
+
+    border-radius: 12px;
+
+    font-size: 13px;
+}
+
+.ds-auto-form-status.success {
+    display: block;
+
+    color: #b8f5cf;
+
+    border: 1px solid rgba(120, 230, 170, 0.35);
+
+    background: rgba(120, 230, 170, 0.10);
+}
+
+.ds-auto-form-status.error {
+    display: block;
+
+    color: #ffb3b3;
+
+    border: 1px solid rgba(255, 110, 110, 0.35);
+
+    background: rgba(255, 110, 110, 0.10);
+}
+
+
+/* =========================================================
+   ACTIONS  (small centered submit button)
+========================================================= */
+
+.ds-auto-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 6px;
+}
+
+.ds-auto-submit {
+    position: relative;
+
+    flex: 0 0 auto;
+
+    width: 220px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 48px;
+
+    padding: 6px 6px 6px 24px;
+
+    box-sizing: border-box;
+
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 40px;
+
+    background:
+        linear-gradient(135deg,
+            var(--glass-accent-2) 0%,
+            var(--glass-accent) 100%);
+
+    color: #1a1204;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 10px 26px rgba(224, 161, 44, 0.30),
+        0 1px 0 rgba(255, 255, 255, 0.55) inset;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        opacity 0.3s ease;
+}
+
+/* glossy sweep on hover */
+.ds-auto-submit::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: -60%;
+
+    width: 40%;
+    height: 100%;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.45),
+            transparent);
+
+    transform: skewX(-20deg);
+
+    transition: left 0.6s ease;
+
+    pointer-events: none;
+}
+
+.ds-auto-submit:hover::before {
+    left: 130%;
+}
+
+.ds-auto-submit:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 16px 34px rgba(224, 161, 44, 0.42),
+        0 1px 0 rgba(255, 255, 255, 0.55) inset;
+}
+
+.ds-auto-submit:disabled {
+    opacity: 0.65;
+
+    cursor: not-allowed;
+
+    transform: none;
+}
+
+.ds-auto-submit-icon {
+    width: 36px;
+    height: 36px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(20, 14, 4, 0.88);
+
+    color: var(--glass-accent-2);
+}
+
+.ds-auto-note {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 12px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+.ds-auto-note i {
+    margin-right: 5px;
+
+    color: var(--glass-accent-2);
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   HIDE THE FLOATING "START A PROJECT" TAB WHILE OPEN
+========================================================= */
+
+body:has(.ds-auto-popup.active) .ds-form-trigger {
+    opacity: 0;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .ds-auto-popup {
+        width: 92vw;
+        max-height: 90vh;
+
+        padding: 30px 20px 24px;
+
+        border-radius: 20px;
+    }
+
+    .ds-auto-header {
+        margin-bottom: 22px;
+    }
+
+    .ds-auto-header h2 {
+        font-size: 27px;
+    }
+
+    .ds-auto-subtitle {
+        font-size: 13px;
+    }
+
+    .ds-auto-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ds-auto-submit {
+        width: 100%;
+        max-width: 260px;
+    }
+
+}
+
+
+/* =========================================================
+   SMALLER LAPTOP SCREENS (short height) — tighten spacing
+========================================================= */
+
+@media (max-height: 780px) and (min-width: 701px) {
+
+    .ds-auto-popup {
+        padding-top: 28px;
+        padding-bottom: 22px;
+    }
+
+    .ds-auto-header {
+        margin-bottom: 18px;
+    }
+
+    .ds-auto-logo {
+        margin-bottom: 10px;
+    }
+
+    .ds-auto-logo img {
+        width: 52px;
+        height: 52px;
+    }
+
+    .ds-auto-header h2 {
+        font-size: 30px;
+    }
+
+}
+
+
+/* =========================================================
+   ACCESSIBILITY / FALLBACKS
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .ds-auto-popup,
+    .ds-auto-overlay {
+        transition: none;
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   SIDE DRAWER — MATCH AUTO POPUP BACKGROUND
+========================================================= */
+
+:root {
+    --ds-shared-popup-bg-image: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 800 800%22 preserveAspectRatio=%22xMidYMid slice%22%3E%3Cpath d=%22M581 478L567 548L703 543Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M437 327L449 425L581 478Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M668 426L703 543L800 582Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M209 541L108 664L211 722Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M0 90L115 124L77 231Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M341 494L309 594L433 576Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M572 0L692 0L721 126Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M481 129L323 193L454 224Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.11%22/%3E%3Cpath d=%22M572 0L481 129L537 151Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M486 664L563 713L444 800Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M141 419L134 542L209 541Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M678 369L581 478L668 426Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.08%22/%3E%3Cpath d=%22M696 655L556 800L653 800Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.11%22/%3E%3Cpath d=%22M323 193L454 224L437 327Z%22 fill=%22%23e0a12c%22 fill-opacity=%220.05%22/%3E%3Cpath d=%22M800 334L668 426M692 0L721 126M195 205L323 193M581 478L703 543M696 655L556 800M251 83L77 231M375 0L328 83M537 151L721 126M375 0L455 0M800 0L721 126M539 363L678 369M134 542L0 657M0 607L134 542M211 722L366 671M486 664L563 713M211 722L92 800M341 494L449 425M364 800L444 800M195 205L359 329M597 230L696 229M486 664L444 800M366 671L364 800M359 329L437 327M115 124L251 83M251 83L195 205M572 0L692 0M437 327L539 363M0 90L77 231M678 369L581 478M309 594L433 576M233 0L328 83M108 664L211 722M703 543L696 655M341 494L209 541M97 381L207 488M251 83L323 193M92 800L210 800M0 657L0 800%22 stroke=%22%23e0a12c%22 stroke-opacity=%220.55%22 stroke-width=%221.1%22 fill=%22none%22/%3E%3Cpath d=%22M444 800L556 800M800 723L800 800M323 193L454 224M696 655L800 723M567 548L703 543M328 83L481 129M0 203L0 340M481 129L454 224M359 329L341 494M108 664L92 800M696 229L539 363M800 241L800 334M668 426L703 543M141 419L209 541M572 0L537 151M539 363L581 478M800 444L800 582M309 594L211 722M433 576L486 664M581 478L668 426M0 657L108 664M0 0L111 0M115 124L77 231M563 713L696 655M0 492L141 419M111 0L251 83M141 419L207 488M328 83L323 193M207 488L209 541M449 425L567 548M77 231L97 381M696 229L678 369M572 0L481 129M563 713L556 800M721 126L800 241M195 205L97 381M323 193L437 327M454 224L597 230M433 576L567 548M692 0L800 0M341 494L433 576M800 0L800 123M481 129L537 151M449 425L581 478M800 582L696 655M108 664L0 800M341 494L309 594M449 425L433 576M0 90L0 203M0 340L97 381M207 488L341 494M597 230L539 363M696 229L800 241M572 0L721 126M653 800L800 800M0 90L115 124M323 193L359 329M800 123L800 241M0 492L134 542M97 381L141 419M0 340L0 492%22 stroke=%22%23e0a12c%22 stroke-opacity=%220.32%22 stroke-width=%221.1%22 fill=%22none%22/%3E%3Cpath d=%22M0 607L0 657M210 800L364 800M111 0L233 0M668 426L800 582M366 671L486 664M309 594L486 664M563 713L444 800M800 582L800 723M455 0L572 0M703 543L800 582M0 340L141 419M597 230L437 327M233 0L375 0M195 205L266 369M455 0L481 129M134 542L209 541M211 722L210 800M141 419L134 542M567 548L696 655M537 151L597 230M233 0L251 83M696 655L653 800M111 0L115 124M0 0L0 90M0 203L77 231M211 722L364 800M0 492L0 607M678 369L800 334M481 129L597 230M486 664L364 800M721 126L800 123M668 426L800 444M455 0L328 83M97 381L266 369M437 327L341 494M77 231L195 205M309 594L366 671M0 0L115 124M481 129L323 193M251 83L328 83M209 541L309 594M134 542L108 664M454 224L437 327M556 800L653 800M266 369L359 329M800 241L678 369M537 151L696 229M567 548L563 713M437 327L449 425M266 369L207 488M0 800L92 800M567 548L486 664M0 203L97 381M209 541L211 722M209 541L108 664M581 478L567 548M800 334L800 444M678 369L668 426M696 655L800 800M437 327L581 478M721 126L696 229M266 369L341 494%22 stroke=%22%23e0a12c%22 stroke-opacity=%220.16%22 stroke-width=%221.1%22 fill=%22none%22/%3E%3Ccircle cx=%22454%22 cy=%22224%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%220%22 cy=%22340%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%220%22 cy=%22492%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22364%22 cy=%22800%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22141%22 cy=%22419%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22692%22 cy=%220%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22266%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22323%22 cy=%22193%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22209%22 cy=%22541%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22359%22 cy=%22329%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22266%22 cy=%22369%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22486%22 cy=%22664%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22696%22 cy=%22229%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%220%22 cy=%2290%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22537%22 cy=%22151%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22328%22 cy=%2283%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%220%22 cy=%220%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22266%22 cy=%22369%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22323%22 cy=%22193%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22111%22 cy=%220%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22115%22 cy=%22124%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22800%22 cy=%22723%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22678%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%220%22 cy=%220%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22653%22 cy=%22800%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22678%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22111%22 cy=%220%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22678%22 cy=%22369%22 r=%223%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22449%22 cy=%22425%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22696%22 cy=%22229%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22696%22 cy=%22229%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.55%22/%3E%3Ccircle cx=%22251%22 cy=%2283%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%22800%22 cy=%22123%22 r=%222%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3Ccircle cx=%220%22 cy=%22340%22 r=%222.5%22 fill=%22%23f7cf7a%22 fill-opacity=%220.8%22/%3E%3C/svg%3E");
+}
+
+.ds-form-drawer {
+    /* Same theme variables used by the final auto popup */
+    --glass-accent: #e0a12c;
+    --glass-accent-2: #f7cf7a;
+    --glass-fill-top: #121212;
+    --glass-fill-bottom: #070707;
+    --glass-border: rgba(224, 161, 44, 0.32);
+    --glass-field: rgba(20, 20, 20, 0.82);
+    --glass-field-border: rgba(255, 255, 255, 0.12);
+
+    color: #ffffff;
+    color-scheme: dark;
+
+    background:
+        radial-gradient(90% 60% at 50% 0%,
+            rgba(224, 161, 44, 0.10),
+            transparent 70%),
+        radial-gradient(ellipse 78% 68% at 50% 50%,
+            rgba(8, 8, 8, 0.86) 34%,
+            transparent 100%),
+        var(--ds-shared-popup-bg-image) center / cover no-repeat,
+        linear-gradient(180deg,
+            var(--glass-fill-top) 0%,
+            var(--glass-fill-bottom) 100%);
+
+    border-left: 1px solid var(--glass-border);
+
+    box-shadow:
+        -30px 0 90px rgba(0, 0, 0, 0.85),
+        -10px 0 70px rgba(224, 161, 44, 0.10),
+        0 1px 0 rgba(255, 255, 255, 0.10) inset;
+}
+
+.ds-form-drawer::before {
+    content: "";
+
+    position: absolute;
+    top: 0;
+    left: 14%;
+    right: 14%;
+    height: 2px;
+
+    background:
+        linear-gradient(90deg,
+            transparent,
+            var(--glass-accent-2),
+            transparent);
+
+    pointer-events: none;
+    z-index: 5;
+}
+
+.ds-form-drawer > * {
+    position: relative;
+    z-index: 2;
+}
+
+.ds-form-drawer::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+}
+
+/* AI ICONS */
+
+/* AI Footer - Reference Design */
+.ai-section {
+    width: 100%;
+    margin: 0 0 50px; /* shubham */
+    padding: 0;
+}
+
+.ai-section h5 {
+    margin: 0 0 20px;
+    color: #ffffff;
+    font-size: 23px;
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: -0.4px;
+}
+
+.ai-footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.ai-footer .ai-card {
+    width: 45px;
+    height: 45px;
+    /* min-height: 70px; */
+    padding: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ECECEC;
+    border: none;
+    border-radius: 18px;
+    box-shadow: none;
+
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.ai-footer .ai-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+
+    object-fit: contain;
+    background: transparent;
+    border-radius: 0;
+}
+
+.ai-footer .ai-card span {
+    display: none;
+}
+
+.ai-footer .ai-card:hover {
+    transform: translateY(-3px);
+    background: #ECECEC;
+    border-color: transparent;
+    box-shadow: none;
+}
+
+.ai-footer .ai-card:focus-visible {
+    outline: 2px solid #ffffff;
+    outline-offset: 3px;
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .ai-section h5 {
+        font-size: 21px;
+    }
+
+    .ai-footer {
+        gap: 8px;
+    }
+
+    .ai-footer .ai-card {
+        width: 40px;
+        height: 40px;
+        border-radius: 16px;
+        padding: 9px;
+    }
+}
+
+
+.ai-section {
+    width: 100%;
+    margin-top: 0 !important;
+    margin-bottom: 90px !important;
+    padding-top: 0 !important;
+}
+
+.ai-section h5 {
+    margin-top: 0 !important;
+    margin-bottom: 12px !important;
+}
+
+.ai-footer {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.footer-socials {
+    margin-top: 0 !important;
+}
+
+ 
+/* END AI ICONS */
+
+
+
+/* =========================================================
+   TABLET MENU — STRAIGHT LEFT ALIGNMENT
+========================================================= */
+
+@media screen and (min-width: 577px) and (max-width: 992px) {
+
+    .mil-main-menu {
+        justify-content: flex-start !important;
+    }
+
+    .mil-main-menu > ul {
+        align-items: flex-start !important;
+        text-align: left !important;
+    }
+
+    .mil-main-menu > ul > li {
+        width: 100% !important;
+        text-align: left !important;
+    }
+
+    .mil-main-menu > ul > li > a {
+        justify-content: flex-start !important;
+        text-align: left !important;
+    }
+
+    .mil-main-menu > ul > li > ul {
+        width: 100% !important;
+        padding-left: 20px !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    .mil-main-menu > ul > li > ul > li {
+        width: 100% !important;
+        text-align: left !important;
+        align-items: flex-start !important;
+    }
+
+    .mil-main-menu > ul > li > ul > li > a {
+        display: block !important;
+        width: 100% !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+    }
+}
+
+
+/* =========================================================
+   SUBMENU (accordion mode) — everything aligned LEFT 
+========================================================= */
+/* shubham */
+@media screen and (max-width: 992px) {
+
+    /* level 2 (services) + level 3 (sub-services) lists */
+    .mil-main-menu > ul > li > ul,
+    .mil-main-menu > ul > li > ul ul {
+        display: block !important;
+        align-items: flex-start !important;
+        width: 100% !important;
+        margin: 0 !important;
+        text-align: left !important;
+    }
+
+    /* level 3: indent under its parent, same left edge for every item */
+    .mil-main-menu > ul > li > ul ul {
+        padding-left: 20px !important;
+    }
+
+    /* all items in both levels */
+    .mil-main-menu > ul > li > ul li,
+    .mil-main-menu > ul > li > ul ul li {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 0 12px 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+        transform: none !important;
+    }
+
+    /* a little space above the first sub-service
+       (margin, not padding, so it stays hidden while closed) */
+    .mil-main-menu > ul > li > ul ul li:first-child {
+        margin-top: 12px !important;
+    }
+
+    /* all links in both levels */
+    .mil-main-menu > ul > li > ul li > a,
+    .mil-main-menu > ul > li > ul ul li > a {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
+        transform: none !important;
+        white-space: normal;
+    }
+
+    /* sub-services slightly dimmer than the service name */
+    .mil-main-menu > ul > li > ul ul li > a {
+        font-size: 12px !important;
+        color: rgba(255, 255, 255, 0.55) !important;
+    }
+
+    /* let the opened Services list grow so nothing is clipped */
+    .mil-main-menu > ul > li > ul.mil-active {
+        max-height: 3000px !important;
+    }
+}
+
+/* SUBMENU (accordion mode) — everything aligned LEFT === */ 
+
+/* shubham */   
+/* =========================================================
+   SIDE DRAWER — animated wireframe background
+   (same rotating dodecahedron as the homepage banner)
+========================================================= */
+
+/* plain black base — replaces the old gold-line image */
+.ds-form-drawer {
+    background:
+        radial-gradient(120% 60% at 85% 0%,
+            rgba(224, 161, 44, 0.08),
+            transparent 65%),
+        #000;
+}
+
+/* background layer: stays put while the form scrolls */
+.ds-form-drawer > .ds-drawer-bg {
+    position: sticky;
+    top: 0;
+    height: 0;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.ds-drawer-bg-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    overflow: hidden;
+}
+
+/* each shape = 300×300 box that floats up and down */
+.ds-shape {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    opacity: 0.4;
+    animation: jump 10s linear infinite;
+}
+
+/* gold edges */
+.ds-shape .mil-pentagon div {
+    border-top: 1px solid rgba(224, 161, 44, 0.85);
+}
+
+/* the dodecahedron itself spins faster than the 100s default */
+.ds-shape .mil-dodecahedron {
+    animation: rotate 45s infinite linear;
+}
+
+/* big (top right) — like the banner */
+.ds-shape-1 {
+    top: -40px;
+    right: -170px;
+    scale: 1.7;
+}
+
+/* medium (middle left) */
+.ds-shape-2 {
+    top: 42%;
+    left: -170px;
+    scale: 1.1;
+    animation-delay: -4s;
+}
+.ds-shape-2 .mil-dodecahedron { animation-duration: 60s; animation-direction: reverse; }
+
+/* small (bottom right) */
+.ds-shape-3 {
+    bottom: -70px;
+    right: -40px;
+    scale: 0.8;
+    animation-delay: -7s;
+}
+
+/* don't burn GPU while the drawer is closed */
+.ds-form-drawer:not(.active) .ds-shape,
+.ds-form-drawer:not(.active) .ds-shape .mil-dodecahedron {
+    animation-play-state: paused;
+}
+
+/* lighter on phones */
+@media (max-width: 600px) {
+    .ds-shape-2 { display: none; }
+    .ds-shape-1 { right: -190px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .ds-shape,
+    .ds-shape .mil-dodecahedron { animation: none; }
+}
+
+/* SIDE DRAWER — animated wireframe background */
+
+
+/* auto pop up form animation */ /* shubam */
+/* =========================================================
+   AUTO POPUP — animated wireframe background
+========================================================= */
+
+/* black base (replaces the static gold-line image) */
+.ds-auto-popup {
+    background:
+        radial-gradient(120% 60% at 85% 0%,
+            rgba(224, 161, 44, 0.08),
+            transparent 65%),
+        #000;
+
+    /* padding + scrolling now live on .ds-popup-scroll */
+    padding: 0 !important;
+    overflow: hidden !important;
+    display: flex;
+    flex-direction: column;
+}
+
+/* animated layer: fills the whole popup, never scrolls */
+.ds-popup-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+/* the form content */
+.ds-popup-scroll {
+    position: relative;
+    z-index: 2;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow-y: auto;
+    padding: 38px 44px 30px;
+
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.25) transparent;
+}
+
+.ds-popup-scroll::-webkit-scrollbar { width: 6px; }
+.ds-popup-scroll::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+}
+
+/* close button stays on top and doesn't scroll */
+.ds-auto-popup > .ds-auto-close { z-index: 5; }
+
+/* ---- shapes (same spinning dodecahedron as the banner) ---- */
+.ds-popup-bg .ds-shape .mil-dodecahedron { animation-duration: 50s; }
+
+/* big, top right */
+.ds-pshape-1 {
+    top: -70px;
+    right: -120px;
+    scale: 1.6;
+}
+
+/* medium, bottom left */
+.ds-pshape-2 {
+    bottom: -110px;
+    left: -120px;
+    scale: 1.3;
+    animation-delay: -4s;
+}
+.ds-pshape-2 .mil-dodecahedron {
+    animation-duration: 65s;
+    animation-direction: reverse;
+}
+
+/* small, bottom */
+.ds-pshape-3 {
+    bottom: -80px;
+    right: 22%;
+    scale: 0.8;
+    animation-delay: -7s;
+}
+
+/* pause while the popup is closed */
+.ds-auto-popup:not(.active) .ds-shape,
+.ds-auto-popup:not(.active) .ds-shape .mil-dodecahedron {
+    animation-play-state: paused;
+}
+
+/* ---- same paddings as before, now on the scroll box ---- */
+@media (max-width: 700px) {
+    .ds-popup-scroll { padding: 30px 20px 24px; }
+    .ds-pshape-3 { display: none; }
+    .ds-pshape-1 { right: -170px; }
+}
+
+@media (max-height: 780px) and (min-width: 701px) {
+    .ds-popup-scroll { padding-top: 28px; padding-bottom: 22px; }
+}
+
+/* =========================================================
+   AUTO POPUP — animated wireframe background */
+
+
+    /* service sub services tap */
+   /* =========================================================
+   MOBILE / TABLET (≤992px): tap a service → its sub-services // shubham //
+========================================================= */
+
+/* "Overview" link exists only for touch layouts */
+.mil-main-menu li.mil-sub-overview { display: none !important; }
+
+@media screen and (max-width: 992px) {
+
+    .mil-main-menu li.mil-sub-overview { display: block !important; }
+
+    .mil-main-menu li.mil-sub-overview > a {
+        color: #C78C24 !important;
+    }
+
+    /* let the opened Services list grow when a service expands */
+    .mil-main-menu > ul > li > ul.mil-active {
+        max-height: 4000px !important;
+    }
+
+    /* + / – indicator on services that have sub-services */
+    .mil-main-menu > ul > li > ul > li.mil-has-children > a::after {
+        content: "+";
+        display: inline-block;
+        margin-left: 10px;
+        color: #C78C24;
+        font-weight: 700;
+    }
+
+    .mil-main-menu > ul > li > ul > li.mil-has-children.mil-sub-open > a::after {
+        content: "\2212";
+    }
+
+    .mil-main-menu > ul > li > ul > li.mil-has-children.mil-sub-open > a {
+        color: #e3a73a !important;
+    }
+
+    /* sub-service list: closed by default, opens with .mil-sub-open */
+    .mil-main-menu > ul > li > ul > li.mil-has-children > ul {
+        display: block !important;
+        position: static !important;
+        width: 100% !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        align-items: flex-start !important;
+        text-align: left !important;
+        margin: 0 !important;
+        padding: 0 0 0 16px !important;
+        border-left: 1px solid rgba(199, 140, 36, 0.4);
+        transition: max-height 0.4s ease !important;
+    }
+
+    .mil-main-menu > ul > li > ul > li.mil-has-children.mil-sub-open > ul {
+        max-height: 1200px !important;
+    }
+
+    /* sub-service items, aligned left */
+    .mil-main-menu > ul > li > ul > li > ul > li {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 0 10px 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+    }
+
+    .mil-main-menu > ul > li > ul > li > ul > li:first-child { margin-top: 12px !important; }
+    .mil-main-menu > ul > li > ul > li > ul > li:last-child  { margin-bottom: 4px !important; }
+
+    .mil-main-menu > ul > li > ul > li > ul > li > a {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+        justify-content: flex-start !important;
+        white-space: normal !important;
+        transform: none !important;
+        font-size: 11px !important;
+        line-height: 1.5 !important;
+        letter-spacing: 1.4px !important;
+        color: rgba(255, 255, 255, 0.55) !important;
+    }
+
+    .mil-main-menu > ul > li > ul > li > ul > li > a:hover {
+        color: rgba(255, 255, 255, 0.9) !important;
+    }
+}
+
+@media screen and (max-width: 576px) {
+
+    /* old rule capped the Services list at 190px — too narrow for sub-services */
+    .mil-main-menu > ul > li > ul.mil-submenu,
+    .mil-main-menu > ul > li > ul#servicesMenuList {
+        width: 100% !important;
+    }
+
+    .mil-menu-frame .mil-main-menu {
+        max-width: calc(100vw - 48px);
+    }
+
+    .mil-main-menu > ul > li > ul > li > ul > li > a {
+        font-size: 10px !important;
+        letter-spacing: 1.2px !important;
+    }
+}
+ /* service sub services tap */
+
+ /* shubham */ /* language button fix for small screen */
+ /* =========================================================
+   LANGUAGE SWITCHER + HEADER LOGO — small screens
+========================================================= */
+@media screen and (max-width: 576px) {
+
+    /* compact button, vertically centred in the 62px header,
+       sitting just left of the hamburger */
+    .mil-lang-switcher {
+        top: 15px;
+        right: 70px;
+    }
+
+    .mil-lang-current {
+        gap: 4px;
+        padding: 6px 10px;
+        font-size: 12px;
+        line-height: 1;
+        border-radius: 20px;
+    }
+
+    .mil-lang-flag { font-size: 13px; }
+
+    /* dropdown never wider than the screen */
+    .mil-lang-list {
+        min-width: 150px;
+        max-width: calc(100vw - 90px);
+    }
+
+    /* logo shrinks only as much as needed so it never reaches the button */
+    .mil-frame > .mil-frame-top .mil-header-logo-mobile {
+        width: min(220px, calc(100vw - 180px)) !important;
+        max-width: none !important;
+        height: auto !important;
+    }
+
+    /* right-to-left languages (Arabic): mirror the position */
+    [dir="rtl"] .mil-lang-switcher {
+        right: auto;
+        left: 70px;
+    }
+}
+
+/* very small phones: hide the flag inside the button (EN is enough) */
+@media screen and (max-width: 400px) {
+    .mil-lang-current .mil-lang-flag { display: block; }
+}
+/* language button fix for small screen */
+
+
+/* "START A PROJECT" TAB — compact, two lines on small screens */
+
+
+/* remove leftover violet/blue glow from the old glass theme */ /* shubham */
+.ds-auto-overlay::after {
+    content: none !important;
+    display: none !important;
+    background: none !important;
+}
+/* remove leftover violet/blue glow from the old glass theme */
+
+
+
+
+
+
+/* =========================================================
+   ASK AI POPUP (sub-service pages)
+========================================================= */
+/* ASK AI POPUP */
+.askai-pop {
+    position: fixed;
+    z-index: 1500;
+    padding: 10px 12px 12px;
+    background: #0d0d0d;
+    border: 1px solid rgba(224, 161, 44, 0.45);
+    border-radius: 16px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s;
+}
+.askai-pop.open { opacity: 1; visibility: visible; }
+
+
+
+.askai-pop div { display: flex; gap: 8px; justify-content: center; }
+
+.askai-pop button {
+    width: 40px;
+    height: 40px;
+    padding: 8px;
+    border: 0;
+    border-radius: 12px;
+    background: #ececec;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.askai-pop button:hover { transform: translateY(-3px); }
+.askai-pop img { display: block; width: 100%; height: 100%; object-fit: contain; }
+
+@media (max-width: 480px) {
+    .askai-pop button { width: 36px; height: 36px; padding: 7px; }
+}
+/* =========================================================
+   ASK AI POPUP (sub-service pages)
+========================================================= */
+
+.mil-404-banner .mil-animation .mil-pentagon div {
+    border-top: 1px solid #D79218 !important;
+}
+
+
+
+/* Desktop animated logo - Home page only */
+/*@media (min-width: 992px) {*/
+/*    .mil-frame-top .mil-logo video.show-logo {*/
+/*        display: block !important;*/
+/*        width: 310px !important;*/
+/*        height: 80px !important;*/
+/*        object-fit: contain !important;*/
+/*        object-position: left center !important;*/
+/*        margin: 0 !important;*/
+/*        padding: 0 !important;*/
+/*        max-width: none !important;*/
+/*    }*/
+/*}*/
+
+
+/* Animated full logo in the footer */
+/*.footer-animated-logo video {*/
+/*    display: block;*/
+/*    width: 270px;*/
+/*    max-width: 100%;*/
+/*    height: auto;*/
+/*    object-fit: contain;*/
+/*}*/
+
+
+/* index.html services number style / / shubham */
+/* numbered badge on service cards */
+.mil-service-num {
+    position: absolute;
+    top: 16px;
+    left: 30px;
+
+    width: 28px;
+    height: 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1.5px solid #C78C24;
+    border-radius: 50%;
+
+    color: #C78C24;
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1;
+
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* fills orange when the card is hovered */
+.mil-service-card-sm:hover .mil-service-num {
+    background: #C78C24;
+    color: #000;
+}
+
+
+/* Category scrolling wrapper */
+.mil-category-scroll-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Horizontal category list */
+.mil-category-list {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 16px;
+
+    width: 100%;
+    margin: 0;
+    padding: 8px 0;
+
+    list-style: none;
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    white-space: nowrap;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Hide scrollbar */
+.mil-category-list::-webkit-scrollbar {
+    display: none;
+}
+
+/* Prevent category items from shrinking */
+.mil-category-list li {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+/* Keep category text on one line */
+.mil-category-list li a {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* Optional: smoother category scrolling on mobile */
+@media (max-width: 768px) {
+    .mil-category-scroll-wrapper {
+        overflow: hidden;
+    }
+
+    .mil-category-list {
+        gap: 12px;
+    }
+}
