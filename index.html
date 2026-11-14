@@ -1,23 +1,920 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DeepshiTech</title>
-  <style>
-    body { margin:0; font-family:Arial,sans-serif; background:#0d0d0f; color:#f5f5f5; }
-    main { max-width:960px; margin:0 auto; padding:80px 20px; }
-    a { color:#f0b14a; }
-    .box { border:1px solid rgba(255,255,255,.12); border-radius:14px; padding:28px; background:rgba(255,255,255,.02); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/plugins/bootstrap-grid.css">
+    <link rel="stylesheet" href="../css/plugins/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/plugins/swiper.min.css">
+    <link rel="stylesheet" href="../css/plugins/fancybox.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/custom.css">
+
+    <title>Creative Portfolio | Deepshitech</title>
+    <meta name="description"
+        content="Explore DeepshiTech's creative work across design, advertising, digital campaigns, and technology.">
+    <link rel="icon" href="../img/Fev_icon.png" sizes="16x16">
+    <style>
+        .portfolio2-hero h1 {
+            font-weight: 400;
+        }
+
+        .portfolio2-hero h1 strong {
+            font-weight: 500;
+        }
+
+        .portfolio2-heading-line {
+            display: block;
+        }
+
+        .portfolio2-hero-copy {
+            margin: 0 0 52px !important;
+        }
+
+        .portfolio2-hero .mil-position-1 .mil-pentagon div {
+            border-top: 2px solid #d79218;
+        }
+
+        .portfolio2-hero .mil-position-1 {
+            transform: scale(3.04);
+            transform-origin: center;
+            opacity: 0.18;
+        }
+
+        .portfolio2-actions {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .portfolio2-section-label {
+            margin-bottom: 20px;
+            color: #c78c24;
+        }
+
+        .portfolio2-gallery-section {
+            background: #f2f2f2;
+            color: #111;
+        }
+
+        .portfolio2-gallery-section h2 {
+            color: #111;
+        }
+
+        .portfolio2-gallery-section p {
+            color: rgba(17, 17, 17, .68);
+            line-height: 1.7;
+        }
+
+        .portfolio2-gallery-title {
+            margin: 0 0 16px;
+        }
+
+        .portfolio2-gallery {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+        }
+
+        .portfolio2-card {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding: 0;
+            overflow: hidden;
+            border: 0;
+            border-radius: 4px;
+            background: #111;
+            cursor: zoom-in;
+            transition: transform 280ms ease, box-shadow 280ms ease;
+        }
+
+        .portfolio2-card img {
+            display: block;
+            width: 100%;
+            aspect-ratio: 4 / 5;
+            object-fit: cover;
+            user-select: none;
+            -webkit-user-drag: none;
+            transition: transform 450ms cubic-bezier(.2, .7, .2, 1), opacity 300ms ease;
+        }
+
+        .portfolio2-card:hover,
+        .portfolio2-card:focus-visible {
+            z-index: 2;
+            transform: translateY(-10px) scale(1.05);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, .6);
+            outline: 1px solid rgba(199, 140, 36, .65);
+        }
+
+        .portfolio2-card:hover img,
+        .portfolio2-card:focus-visible img {
+            transform: scale(1.08);
+            opacity: .84;
+        }
+
+        .portfolio2-lightbox[hidden] {
+            display: none;
+        }
+
+        .portfolio2-lightbox {
+            position: fixed;
+            z-index: 10000;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            padding: 48px;
+            background: rgba(8, 8, 8, .94);
+        }
+
+        .portfolio2-lightbox img {
+            display: block;
+            max-width: min(100%, 1400px);
+            max-height: calc(100vh - 110px);
+            object-fit: contain;
+            box-shadow: 0 20px 70px rgba(0, 0, 0, .5);
+        }
+
+        .portfolio2-lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border: 1px solid rgba(255, 255, 255, .55);
+            border-radius: 50%;
+            background: transparent;
+            color: #fff;
+            font-size: 30px;
+            line-height: 1;
+            cursor: pointer;
+        }
+
+        .portfolio2-lightbox-close:hover,
+        .portfolio2-lightbox-close:focus-visible {
+            border-color: #ff9800;
+            color: #ff9800;
+        }
+
+        .portfolio2-lightbox-caption {
+            position: absolute;
+            bottom: 18px;
+            left: 24px;
+            right: 24px;
+            color: #fff;
+            text-align: center;
+        }
+
+        body.portfolio2-lightbox-open {
+            overflow: hidden;
+        }
+
+        @media (max-width: 900px) {
+            .portfolio2-gallery {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 18px;
+            }
+
+            .portfolio2-hero .mil-position-1 {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .portfolio2-gallery {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+                gap: 12px;
+            }
+
+            .portfolio2-lightbox {
+                padding: 24px;
+            }
+
+            .portfolio2-lightbox-close {
+                top: 12px;
+                right: 12px;
+            }
+
+            .portfolio2-hero-copy {
+                margin-bottom: 36px !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .portfolio2-card,
+            .portfolio2-card img {
+                transition: none;
+            }
+        }
+    </style>
 </head>
 <body>
-  <main>
-    <div class="box">
-      <h1>DeepshiTech</h1>
-      <p>Creative portfolio landing page.</p>
-      <p><a href="Fashion%20creative/portfolio2.html">Open the fashion portfolio</a></p>
+    <script>window.MIL_PATH_PREFIX="../";</script>
+    <div class="mil-wrapper" id="top">
+        <div id="site-header">		<!-- cursor -->
+		<div class="mil-ball">
+			<span class="mil-icon-1">
+				<svg viewBox="0 0 128 128">
+					<path d="M106.1,41.9c-1.2-1.2-3.1-1.2-4.2,0c-1.2,1.2-1.2,3.1,0,4.2L116.8,61H11.2l14.9-14.9c1.2-1.2,1.2-3.1,0-4.2	c-1.2-1.2-3.1-1.2-4.2,0l-20,20c-1.2,1.2-1.2,3.1,0,4.2l20,20c0.6,0.6,1.4,0.9,2.1,0.9s1.5-0.3,2.1-0.9c1.2-1.2,1.2-3.1,0-4.2	L11.2,67h105.5l-14.9,14.9c-1.2,1.2-1.2,3.1,0,4.2c0.6,0.6,1.4,0.9,2.1,0.9s1.5-0.3,2.1-0.9l20-20c1.2-1.2,1.2-3.1,0-4.2L106.1,41.9	z" />
+				</svg>
+			</span>
+			<div class="mil-more-text">More</div>
+			<div class="mil-choose-text">Сhoose</div>
+		</div>
+		<!-- cursor end -->
+
+		<!-- scrollbar progress -->
+		<div class="mil-progress-track">
+			<div class="mil-progress"></div>
+		</div>
+		<!-- scrollbar progress end -->
+
+		<!-- language switcher -->
+		<div class="mil-lang-switcher" id="langSwitcher">
+			<button type="button" class="mil-lang-current" id="langCurrentBtn" aria-haspopup="true" aria-expanded="false">
+				<span class="mil-lang-flag" id="langCurrentFlag">🇬🇧</span>
+				<span class="mil-lang-code" id="langCurrentCode">EN</span>
+			</button>
+			<ul class="mil-lang-list" id="langList">
+				<li><button type="button" data-lang="en"><span class="mil-lang-flag">🇬🇧</span> English</button></li>
+				<li><button type="button" data-lang="hi"><span class="mil-lang-flag">🇮🇳</span> हिन्दी</button></li>
+				<li><button type="button" data-lang="es"><span class="mil-lang-flag">🇪🇸</span> Español</button></li>
+				<li><button type="button" data-lang="fr"><span class="mil-lang-flag">🇫🇷</span> Français</button></li>
+				<li><button type="button" data-lang="ar"><span class="mil-lang-flag">🇸🇦</span> العربية</button></li>
+				<li><button type="button" data-lang="zh"><span class="mil-lang-flag">🇨🇳</span> 中文</button></li>
+			</ul>
+		</div>
+		<!-- language switcher end -->
+
+            <!-- menu -->
+            <!-- =========================================================
+     FULLSCREEN NAVIGATION MENU
+========================================================= -->
+
+            <div class="mil-menu-frame">
+
+                <!-- TOP BAR -->
+                <div class="mil-frame-top">
+
+                    <!-- LOGO -->
+                    <a href="/" class="mil-logo">
+
+                        <img src="../img/logo.png" class="logo-d show-logo" alt="DeepshiTech">
+
+                        <img src="../img/logo2.png" class="logo-d show-logo-mob" alt="DeepshiTech">
+
+                    </a>
+
+
+                    <!-- MENU CLOSE / TOGGLE -->
+                    <div class="mil-menu-btn">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <!-- =====================================================
+         MENU CONTENT
+    ====================================================== -->
+
+                <div class="mil-menu-content">
+
+                    <div class="container">
+
+                        <div class="mil-menu-layout">
+
+                            <nav class="mil-main-menu" id="swupMenu">
+
+                                <ul class="mil-menu-list">
+
+
+                                    <!-- =========================
+                             HOMEPAGE
+                        ========================== -->
+
+                                    <li class="mil-has-children mil-active">
+
+                                        <a href="/">
+                                            Homepage
+                                        </a>
+
+                                        <ul class="mil-submenu">
+
+                                            <li>
+                                                <a href="/">
+                                                    Landing page
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="../personal/index.html">
+                                                    Personal
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="../portfolio-slider/index.html">
+                                                    Portfolio slider
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+
+                                    <!-- =========================
+                             PORTFOLIO
+                        ========================== -->
+
+                                    <li class="mil-has-children">
+
+                                        <a href="../portfolio/index.html">
+                                            Portfolio
+                                        </a>
+
+                                        <ul class="mil-submenu">
+
+                                            <li>
+                                                <a href="../portfolio/index.html">
+                                                    All projects
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+
+                                    <!-- =========================
+                             SERVICES
+                        ========================== -->
+
+                                    <li class="mil-has-children mil-services-menu-item">
+
+                                        <a href="../services/index.html">
+                                            Services
+                                        </a>
+
+                                        <ul class="mil-submenu" id="servicesMenuList">
+                                            <!--
+                                    Services will continue to be
+                                    populated by components.js
+                                -->
+                                        </ul>
+
+                                    </li>
+
+
+                                    <!-- =========================
+                             NEWSLETTER
+                        ========================== -->
+
+                                    <li class="mil-has-children">
+
+                                        <a href="#.">
+                                            Newsletter
+                                        </a>
+
+                                        <ul class="mil-submenu">
+
+                                            <li>
+                                                <a href="../blog/index.php">
+                                                    Blog List
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+
+                                    <!-- =========================
+                             OTHER PAGES
+                        ========================== -->
+
+                                    <li class="mil-has-children">
+
+                                        <a href="#.">
+                                            Other pages
+                                        </a>
+
+                                        <ul class="mil-submenu">
+
+                                            <li>
+                                                <a href="../team/index.html">
+                                                    Team
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a href="../contact/index.html">
+                                                    Contact
+                                                </a>
+                                            </li>
+
+                                        </ul>
+
+                                    </li>
+
+
+                                </ul>
+
+                            </nav>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- menu -->
+            <!-- curtain -->
+            <div class="mil-curtain"></div>
+            <!-- curtain end -->
+
+            <!-- frame -->
+            <div class="mil-frame">
+
+                <div class="mil-frame-top">
+
+                    <!-- NORMAL HEADER LOGO -->
+                    <a href="/" class="mil-logo mil-normal-header-logo">
+
+                        <!-- DESKTOP: D ICON ONLY -->
+                        <img src="../img/logo.png" class="mil-header-logo-desktop" alt="DeepshiTech">
+
+                        <!-- MOBILE: FULL DEEPSHITECH LOGO -->
+                        <img src="../img/logo2.png" class="mil-header-logo-mobile" alt="DeepshiTech">
+
+                    </a>
+
+
+                    <!-- MENU BUTTON -->
+                    <div class="mil-menu-btn">
+                        <span></span>
+                    </div>
+
+                </div>
+
+
+                <div class="mil-frame-bottom">
+
+                    <div class="mil-current-page" id="milCurrentPage">
+                    </div>
+
+
+                    <div class="mil-back-to-top">
+
+                        <a href="#top" class="mil-link mil-dark mil-arrow-place">
+                            <span>Back to top</span>
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- frame end -->
+</div>
+        <div class="mil-content">
+            <div id="swupMain" class="mil-main-transition">
+
+
+                <section class="mil-banner mil-dark-bg portfolio2-hero">
+                    <div class="mi-invert-fix">
+                        <div class="mil-animation-frame">
+                            <div class="mil-animation mil-position-1"></div>
+                            <div class="mil-animation mil-position-2"></div>
+                            <div class="mil-animation mil-position-3"></div>
+                        </div>
+                        <div class="mil-gradient"></div>
+                        <div class="container">
+                            <div class="mil-banner-content mil-up">
+                                <h1 class="mil-muted mil-mb-40">
+                                    <span class="portfolio2-heading-line"><strong>Build</strong> <span class="mil-thin">a better</span></span>
+                                    <span class="portfolio2-heading-line"><strong>Creative</strong> <span class="mil-thin">with us</span></span>
+                                </h1>
+                                <div class="row">
+                                    <div class="col-md-8 col-lg-6">
+                                        <p class="mil-light-soft portfolio2-hero-copy">Big ideas deserve thoughtful design and fearless creativity. We bring strategy, craft, and technology together to make work that connects with people and moves brands forward.</p>
+                                    </div>
+                                </div>
+                                <div class="portfolio2-actions">
+                                    <a href="#creative-work" class="mil-button mil-arrow-place"><span>What we do</span></a>
+                                    <a href="#creative-gallery" class="mil-link mil-muted mil-arrow-place"><span>View creative</span></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="portfolio2-gallery-section">
+                    <div class="container mil-p-120-60">
+                        <div class="row justify-content-between align-items-end mil-mb-60">
+                            <div class="col-lg-8">
+                                <p class="mil-suptitle portfolio2-section-label mil-up">Ideas made visible</p>
+                                <h2 id="creative-gallery" class="portfolio2-gallery-title mil-up">A collection of <span class="mil-thin">creative work</span></h2>
+                            </div>
+                            <div class="col-lg-4">
+                                <p class="mil-up">A selection of the visuals, campaigns, and digital experiences we've brought to life.</p>
+                            </div>
+                        </div>
+                        <div class="portfolio2-gallery" aria-label="Creative work gallery">
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 1"><img src="../img/fashion-design/Fashion%20design%20creative%20-%201.png" alt="Fashion design creative - 1" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 2"><img src="../img/fashion-design/Fashion%20design%20creative%20-%202.png" alt="Fashion design creative - 2" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 3"><img src="../img/fashion-design/Fashion%20design%20creative%20-%203.png" alt="Fashion design creative - 3" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 4"><img src="../img/fashion-design/Fashion%20design%20creative%20-%204.png" alt="Fashion design creative - 4" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 5"><img src="../img/fashion-design/Fashion%20design%20creative%20-%205.png" alt="Fashion design creative - 5" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 6"><img src="../img/fashion-design/Fashion%20design%20creative%20-%206.png" alt="Fashion design creative - 6" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 7"><img src="../img/fashion-design/Fashion%20design%20creative%20-%207.png" alt="Fashion design creative - 7" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 8"><img src="../img/fashion-design/Fashion%20design%20creative%20-%208.png" alt="Fashion design creative - 8" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 9"><img src="../img/fashion-design/Fashion%20design%20creative%20-%209.png" alt="Fashion design creative - 9" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 10"><img src="../img/fashion-design/Fashion%20design%20creative%20-%2010.png" alt="Fashion design creative - 10" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 11"><img src="../img/fashion-design/Fashion%20design%20creative%20-%2011.png" alt="Fashion design creative - 11" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 12"><img src="../img/fashion-design/Fashion%20design%20creative%20-%2012.png" alt="Fashion design creative - 12" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 13"><img src="../img/fashion-design/Fashion%20design%20creative%20-%2013.png" alt="Fashion design creative - 13" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 14"><img src="../img/fashion-design/Fashion%20design%20creative%20-%2014.png" alt="Fashion design creative - 14" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 15"><img src="../img/fashion-design/Fashion%20design%20creative%20-%2015.png" alt="Fashion design creative - 15" loading="lazy"></button>
+                            <button class="portfolio2-card" type="button" aria-label="Fashion design creative - 16"><img src="../img/fashion-design/Fashion%20design%20creative%20-%2016.png" alt="Fashion design creative - 16" loading="lazy"></button>
+                        </div>
+                    </div>
+                </section>
+
+
+            </div>
+        </div>
     </div>
-  </main>
+    <!-- footer -->
+    <div id="site-footer">
+        <footer class="mil-dark-bg">
+            <div class="mi-invert-fix">
+                <div class="container mil-p-120-60">
+                    <div class="row justify-content-between">
+                        <div class="col-md-4 col-lg-4 mil-mb-60">
+
+                            <div class="mil-muted mil-logo mil-up mil-mb-30"><img src="../img/logo2.png"
+                                    style="width:250px" alt="Deepshitech"></div>
+
+                            <p class="mil-light-soft mil-up mil-mb-30">Subscribe our newsletter:</p>
+
+                            <form class="mil-subscribe-form mil-up" onsubmit="return false;">
+                                <input type="email" placeholder="Enter your email" required>
+                                <button type="submit" class="mil-button mil-icon-button-sm mil-arrow-place"></button>
+                            </form>
+
+                        </div>
+                        <div class="col-md-7 col-lg-6">
+                            <div class="row justify-content-end">
+                                <div class="col-md-6 col-lg-7">
+
+                                    <nav class="mil-footer-menu mil-mb-60">
+                                        <ul>
+                                            <li class="mil-up mil-active">
+                                                <a href="/">Home</a>
+                                            </li>
+                                            <li class="mil-up">
+                                                <a href="../portfolio/index.html">Portfolio</a>
+                                            </li>
+                                            <li class="mil-up">
+                                                <a href="../services/index.html">Services</a>
+                                            </li>
+                                            <li class="mil-up">
+                                                <a href="../contact/index.html">Contact</a>
+                                            </li>
+                                            <li class="mil-up">
+                                                <a href="../blog/index.php">Blog</a>
+                                            </li>
+                                        </ul>
+                                    </nav>
+
+                                </div>
+                                <div class="col-md-6 col-lg-5">
+
+                                    <ul class="mil-menu-list mil-up mil-mb-60">
+                                        <li><a href="../privacy-policy/index.html" class="mil-light-soft">Privacy
+                                                Policy</a></li>
+                                        <li><a href="../terms-conditions/index.html" class="mil-light-soft">Terms and
+                                                conditions</a></li>
+                                        <li><a href="../cookie-policy/index.html" class="mil-light-soft">Cookie Policy</a>
+                                        </li>
+                                        <li><a href="../career/career.html" class="mil-light-soft">Careers</a></li>
+                                    </ul>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- office address carousel -->
+                    <!-- =========================================
+     FOOTER BOTTOM INFO
+========================================= -->
+                    <div class="footer-bottom-grid">
+                        <!-- LEFT : SOCIAL + COPYRIGHT -->
+                        <!-- LEFT COLUMN -->
+                        <div class="footer-bottom-left">
+
+                            <!-- AI TOOLS -->
+                            <div class="ai-section">
+                                <h5>Ask AI About DeepshiTech</h5>
+
+                                <div class="ai-footer">
+                                    <button type="button" class="ai-card" onclick="openAI('chatgpt')"
+                                        aria-label="Ask ChatGPT about our services">
+                                        <img src="../img/ai/chatgpt.png" alt="ChatGPT">
+                                    </button>
+
+                                    <button type="button" class="ai-card" onclick="openAI('claude')"
+                                        aria-label="Ask Claude about our services">
+                                        <img src="../img/ai/claude.png" alt="Claude">
+                                    </button>
+
+                                    <button type="button" class="ai-card" onclick="openAI('perplexity')"
+                                        aria-label="Ask Perplexity about our services">
+                                        <img src="../img/ai/Perplexity.png" alt="Perplexity">
+                                    </button>
+
+                                    <button type="button" class="ai-card" onclick="openAI('gemini')"
+                                        aria-label="Ask Gemini about our services">
+                                        <img src="../img/ai/gemini.png" alt="Gemini">
+                                    </button>
+                                </div>
+                            </div>
+                            <ul class="mil-social-icons mil-up footer-socials">
+                                <li>
+                                    <a href="https://twitter.com/deepshitech" target="_blank" class="social-icon">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="https://www.facebook.com/profile.php?id=100084127384485" target="_blank"
+                                        class="social-icon">
+                                        <i class="fab fa-facebook"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="https://www.instagram.com/deepshitech/" target="_blank"
+                                        class="social-icon">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="https://www.linkedin.com/company/deepshitech/?viewAsMember=true"
+                                        target="_blank" class="social-icon">
+                                        <i class="fab fa-linkedin"></i>
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a href="https://www.youtube.com/channel/UC2zQGOj7kg3ojaA6m7xDsHg" target="_blank"
+                                        class="social-icon">
+                                        <i class="fab fa-youtube"></i>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <div class="footer-copyright">
+                                <p>Copyright 2026. All Rights Reserved.</p>
+
+                                <p>
+                                    Designed by
+                                    <a href="/">
+                                        DeepshiTech Private Limited
+                                    </a>
+                                </p>
+                            </div>
+
+                        </div>
+
+
+                        <!-- RIGHT : OFFICE SLIDER -->
+                        <div class="footer-office-slider" id="footerOfficeSlider">
+
+                            <!-- Previous -->
+                            <button type="button" class="footer-office-arrow footer-office-prev" id="footerOfficePrev"
+                                aria-label="Previous office">
+
+                                <i class="fa-solid fa-arrow-left"></i>
+
+                            </button>
+
+
+                            <!-- Office Content -->
+                            <div class="footer-office-content">
+
+                                <!-- Flag + Location -->
+                                <div class="footer-office-location">
+
+                                    <h6 class="footer-office-heading">
+
+                                        <img id="footerOfficeFlag" src="../img/flags/india.png" alt="India flag">
+
+                                        <span id="footerOfficeName">
+                                            India, Mumbai
+                                        </span>
+
+                                    </h6>
+
+                                </div>
+
+
+                                <!-- Address -->
+                                <p class="footer-office-address" id="footerOfficeAddress">
+
+                                    Time Square Building, Unit No:2,
+                                    A Wing, 4th Floor,
+                                    Andheri Kurla Road,
+                                    Andheri (E),
+                                    Mumbai, Maharashtra 400059
+
+                                </p>
+
+
+                                <!-- Phone -->
+                                <p class="footer-office-phone">
+
+                                    Call :
+                                    <a id="footerOfficePhone" href="tel:02269622225">
+
+                                        022 6962 2225
+
+                                    </a>
+
+                                </p>
+
+
+                                <!-- Google Map -->
+                                <a href="#" id="footerOfficeMap" class="footer-office-map" target="_blank"
+                                    rel="noopener">
+
+                                    VIEW ON MAP
+
+                                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                                </a>
+
+                            </div>
+
+
+                            <!-- Next -->
+                            <button type="button" class="footer-office-arrow footer-office-next" id="footerOfficeNext"
+                                aria-label="Next office">
+
+                                <i class="fa-solid fa-arrow-right"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+                    <!-- FOOTER BOTTOM INFO END -->
+                </div>
+            </div>
+        </footer>
+        <!-- footer end -->
+        <!-- hidden elements -->
+                <div class="mil-hidden-elements">
+                    <div class="mil-dodecahedron">
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                        <div class="mil-pentagon"><div></div><div></div><div></div><div></div><div></div></div>
+                    </div>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="mil-arrow">
+                        <path d="M 14 5.3417969 C 13.744125 5.3417969 13.487969 5.4412187 13.292969 5.6367188 L 13.207031 5.7226562 C 12.816031 6.1136563 12.816031 6.7467188 13.207031 7.1367188 L 17.070312 11 L 4 11 C 3.448 11 3 11.448 3 12 C 3 12.552 3.448 13 4 13 L 17.070312 13 L 13.207031 16.863281 C 12.816031 17.254281 12.816031 17.887344 13.207031 18.277344 L 13.292969 18.363281 C 13.683969 18.754281 14.317031 18.754281 14.707031 18.363281 L 20.363281 12.707031 C 20.754281 12.316031 20.754281 11.682969 20.363281 11.292969 L 14.707031 5.6367188 C 14.511531 5.4412187 14.255875 5.3417969 14 5.3417969 z" />
+                    </svg>
+
+                    <svg width="250" viewBox="0 0 300 1404" fill="none" xmlns="http://www.w3.org/2000/svg" class="mil-lines">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M1 892L1 941H299V892C299 809.71 232.29 743 150 743C67.7096 743 1 809.71 1 892ZM0 942H300V892C300 809.157 232.843 742 150 742C67.1573 742 0 809.157 0 892L0 942Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M299 146V97L1 97V146C1 228.29 67.7096 295 150 295C232.29 295 299 228.29 299 146ZM300 96L0 96V146C0 228.843 67.1573 296 150 296C232.843 296 300 228.843 300 146V96Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M299 1H1V1403H299V1ZM0 0V1404H300V0H0Z" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M150 -4.37115e-08L150 1404L149 1404L149 0L150 -4.37115e-08Z" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M150 1324C232.29 1324 299 1257.29 299 1175C299 1092.71 232.29 1026 150 1026C67.7096 1026 1 1092.71 1 1175C1 1257.29 67.7096 1324 150 1324ZM150 1325C232.843 1325 300 1257.84 300 1175C300 1092.16 232.843 1025 150 1025C67.1573 1025 0 1092.16 0 1175C0 1257.84 67.1573 1325 150 1325Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M300 1175H0V1174H300V1175Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M150 678C232.29 678 299 611.29 299 529C299 446.71 232.29 380 150 380C67.7096 380 1 446.71 1 529C1 611.29 67.7096 678 150 678ZM150 679C232.843 679 300 611.843 300 529C300 446.157 232.843 379 150 379C67.1573 379 0 446.157 0 529C0 611.843 67.1573 679 150 679Z" class="mil-move" />
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M299 380H1V678H299V380ZM0 379V679H300V379H0Z" class="mil-move" />
+                    </svg>
+                </div>
+                <!-- hidden elements end -->
+</div>
+    <div class="portfolio2-lightbox" id="portfolio2Lightbox" role="dialog" aria-modal="true"
+        aria-label="Expanded creative work" tabindex="-1" hidden>
+        <button class="portfolio2-lightbox-close" type="button" aria-label="Close enlarged image">&times;</button>
+        <img src="" alt="">
+        <p class="portfolio2-lightbox-caption"></p>
+    </div>
+    <div id="google_translate_element" class="mil-goog-hidden"></div>
+    <script>
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          includedLanguages: 'en,hi,es,fr,ar,zh',
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+    </script>
+    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit" async></script>
+    <script src="../js/plugins/jquery.min.js"></script>
+    <script src="../js/plugins/swup.min.js"></script>
+    <script src="../js/plugins/swiper.min.js"></script>
+    <script src="../js/plugins/fancybox.min.js"></script>
+    <script src="../js/plugins/gsap.min.js"></script>
+    <script src="../js/plugins/smooth-scroll.js"></script>
+    <script src="../js/plugins/ScrollTrigger.min.js"></script>
+    <script src="../js/plugins/ScrollTo.min.js"></script>
+    <script src="../js/site-data.js"></script>
+    <script src="../js/i18n.js"></script>
+    <script src="../js/office-carousel.js"></script>
+    <script src="../js/components.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/popup.js"></script>
+    <script src="../js/Address.js"></script>
+    <script src="../js/contact-form.js"></script>
+    <script src="../js/auto-popup.js"></script>
+    <script src="../js/ai-tools.js"></script>
+    <script>
+        (function () {
+            var lightbox = document.getElementById('portfolio2Lightbox');
+            var lightboxImage = lightbox.querySelector('img');
+            var caption = lightbox.querySelector('.portfolio2-lightbox-caption');
+            var closeButton = lightbox.querySelector('.portfolio2-lightbox-close');
+            var previousFocus = null;
+
+            function closeLightbox() {
+                lightbox.hidden = true;
+                lightboxImage.src = '';
+                document.body.classList.remove('portfolio2-lightbox-open');
+                if (previousFocus) {
+                    previousFocus.focus();
+                }
+            }
+
+            document.querySelectorAll('.portfolio2-card').forEach(function (card) {
+                var image = card.querySelector('img');
+                if (image) {
+                    image.setAttribute('draggable', 'false');
+                }
+
+                card.addEventListener('click', function () {
+                    var image = card.querySelector('img');
+                    previousFocus = card;
+                    lightboxImage.src = image.src;
+                    lightboxImage.alt = image.alt;
+                    caption.textContent = image.alt;
+                    lightbox.hidden = false;
+                    document.body.classList.add('portfolio2-lightbox-open');
+                    closeButton.focus();
+                });
+            });
+
+            [document.querySelector('.portfolio2-gallery'), lightbox].forEach(function (container) {
+                container.addEventListener('contextmenu', function (event) {
+                    if (event.target.closest('img, .portfolio2-card')) {
+                        event.preventDefault();
+                    }
+                });
+
+                container.addEventListener('dragstart', function (event) {
+                    if (event.target.closest('img, .portfolio2-card')) {
+                        event.preventDefault();
+                    }
+                });
+            });
+
+            lightboxImage.setAttribute('draggable', 'false');
+
+            closeButton.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function (event) {
+                if (event.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+            document.addEventListener('keydown', function (event) {
+                if (!lightbox.hidden && event.key === 'Escape') {
+                    closeLightbox();
+                }
+            });
+        }());
+    </script>
 </body>
 </html>
