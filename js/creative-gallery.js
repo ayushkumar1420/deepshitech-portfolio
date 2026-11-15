@@ -89,4 +89,80 @@
         button.appendChild(image);
         gallery.appendChild(button);
     }
+
+    var lightbox = document.getElementById('portfolio2Lightbox');
+    if (!lightbox) return;
+
+    var lightboxImage = lightbox.querySelector('img');
+    var caption = lightbox.querySelector('.portfolio2-lightbox-caption');
+    var closeButton = lightbox.querySelector('.portfolio2-lightbox-close');
+    var previousButton = document.createElement('button');
+    var nextButton = document.createElement('button');
+    var currentIndex = 0;
+    var cards = Array.prototype.slice.call(gallery.querySelectorAll('.portfolio2-card'));
+
+    previousButton.className = 'portfolio2-lightbox-nav portfolio2-lightbox-prev';
+    previousButton.type = 'button';
+    previousButton.setAttribute('aria-label', 'Previous image');
+    previousButton.innerHTML = '&#10094;';
+    nextButton.className = 'portfolio2-lightbox-nav portfolio2-lightbox-next';
+    nextButton.type = 'button';
+    nextButton.setAttribute('aria-label', 'Next image');
+    nextButton.innerHTML = '&#10095;';
+    lightbox.insertBefore(previousButton, lightboxImage);
+    lightbox.insertBefore(nextButton, caption);
+
+    var navigationStyle = document.createElement('style');
+    navigationStyle.textContent = [
+        '.portfolio2-lightbox-nav { position: fixed; top: 50%; transform: translateY(-50%); z-index: 3; width: 52px; height: 52px; border: 1px solid rgba(255,255,255,.7); border-radius: 50%; background: transparent; color: #fff; font-size: 28px; line-height: 1; cursor: pointer; opacity: 1; pointer-events: auto; transition: background .2s ease, border-color .2s ease, color .2s ease, transform .2s ease; }',
+        '.portfolio2-lightbox-nav:hover, .portfolio2-lightbox-nav:focus-visible { background: rgba(255,152,0,.12); border-color: #ff9800; color: #ff9800; transform: translateY(-50%) scale(1.08); outline: none; }',
+        '.portfolio2-lightbox-prev { left: 32px; }',
+        '.portfolio2-lightbox-next { right: 32px; }',
+        '@media (max-width: 700px) { .portfolio2-lightbox-nav { width: 42px; height: 42px; font-size: 22px; } .portfolio2-lightbox-prev { left: 12px; } .portfolio2-lightbox-next { right: 12px; } }'
+    ].join('');
+    document.head.appendChild(navigationStyle);
+
+    [previousButton, nextButton].forEach(function (button) {
+        button.addEventListener('mouseenter', function () {
+            button.style.color = '#ff9800';
+            button.style.borderColor = '#ff9800';
+            button.style.background = 'rgba(255,152,0,.12)';
+        });
+        button.addEventListener('mouseleave', function () {
+            button.style.color = '';
+            button.style.borderColor = '';
+            button.style.background = '';
+        });
+    });
+
+    function showImage(index) {
+        currentIndex = (index + cards.length) % cards.length;
+        var image = cards[currentIndex].querySelector('img');
+        lightboxImage.src = image.src;
+        lightboxImage.alt = image.alt;
+        caption.textContent = image.alt;
+        lightbox.hidden = false;
+        document.body.classList.add('portfolio2-lightbox-open');
+    }
+
+    cards.forEach(function (card, index) {
+        card.addEventListener('click', function () {
+            currentIndex = index;
+        });
+    });
+    previousButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        showImage(currentIndex - 1);
+        previousButton.focus();
+    });
+    nextButton.addEventListener('click', function (event) {
+        event.stopPropagation();
+        showImage(currentIndex + 1);
+        nextButton.focus();
+    });
+    document.addEventListener('keydown', function (event) {
+        if (lightbox.hidden) return;
+        if (event.key === 'ArrowLeft') showImage(currentIndex - 1);
+        if (event.key === 'ArrowRight') showImage(currentIndex + 1);
+    });
 }());
