@@ -49,7 +49,7 @@
 
       html += '<li class="mil-service-menu-group mil-has-children">';
 
-      html += '<a href="' + prefix + servicePath + '/index.html">'
+      html += '<a href="' + prefix + 'index.php#creative-gallery">'
         + service.full_title
         + '</a>';
 
@@ -66,7 +66,7 @@
             ? sub.slug + '/index.html'
             : subServicesPage;
 
-          html += '<a href="' + prefix + servicePath + '/' + subServicePath + '">'
+          html += '<a href="' + prefix + 'index.php#creative-gallery">'
             + sub.name
             + '</a>';
 
@@ -81,6 +81,39 @@
     });
 
     list.innerHTML = html;
+  }
+
+  // The original theme referenced template pages that are not part of this
+  // project. Keep those menu links useful by sending them to the corresponding
+  // section of the actual site entry point.
+  function normalizeInternalLinks() {
+    var prefix = window.MIL_PATH_PREFIX || '';
+    var galleryUrl = prefix + 'index.php#creative-gallery';
+    var footerUrl = prefix + 'index.php#site-footer';
+    var galleryPaths = [
+      '/personal/',
+      '/portfolio-slider/',
+      '/portfolio/',
+      '/services/'
+    ];
+    var footerPaths = [
+      '/blog/',
+      '/team/',
+      '/contact/',
+      '/privacy-policy/',
+      '/terms-conditions/',
+      '/cookie-policy/',
+      '/career/'
+    ];
+
+    document.querySelectorAll('a[href]').forEach(function (link) {
+      var href = link.getAttribute('href') || '';
+      if (galleryPaths.some(function (path) { return href.indexOf(path) !== -1; })) {
+        link.setAttribute('href', galleryUrl);
+      } else if (footerPaths.some(function (path) { return href.indexOf(path) !== -1; })) {
+        link.setAttribute('href', footerUrl);
+      }
+    });
   }
 
 
@@ -308,6 +341,8 @@
     loadOtpVerifyScript();
 
     buildServicesMenu();
+
+    normalizeInternalLinks();
 
     setCurrentPageLabel();
 
